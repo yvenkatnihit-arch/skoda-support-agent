@@ -1,0 +1,64 @@
+model_id,fuel,transmission,interval_km,interval_months,service_type,est_cost_min,est_cost_max,as_of,source_url
+kylaq,petrol,MT,1000,1,free inspection,0,0,2026-10-17,https://www.v3cars.com/skoda-cars/kylaq/maintenance-cost
+kylaq,petrol,MT,7500,6,free inspection,0,0,2026-10-17,https://www.v3cars.com/skoda-cars/kylaq/maintenance-cost
+kylaq,petrol,MT,15000,12,periodic maintenance (labour free),4188,4188,2026-10-17,https://www.v3cars.com/skoda-cars/kylaq/maintenance-cost
+kylaq,petrol,MT,30000,24,periodic maintenance,8005,8005,2026-10-17,https://www.v3cars.com/skoda-cars/kylaq/maintenance-cost
+kylaq,petrol,MT,45000,36,periodic maintenance,6901,6901,2026-10-17,https://www.v3cars.com/skoda-cars/kylaq/maintenance-cost
+kylaq,petrol,MT,60000,48,major service,11667,11667,2026-10-17,https://www.v3cars.com/skoda-cars/kylaq/maintenance-cost
+kylaq,petrol,MT,75000,60,periodic maintenance,6901,6901,2026-10-17,https://www.v3cars.com/skoda-cars/kylaq/maintenance-cost
+kylaq,petrol,AT,1000,1,free inspection,0,0,2026-10-17,https://www.v3cars.com/skoda-cars/kylaq/maintenance-cost
+kylaq,petrol,AT,7500,6,free inspection,0,0,2026-10-17,https://www.v3cars.com/skoda-cars/kylaq/maintenance-cost
+kylaq,petrol,AT,15000,12,periodic maintenance (labour free),4188,4188,2026-10-17,https://www.v3cars.com/skoda-cars/kylaq/maintenance-cost
+kylaq,petrol,AT,30000,24,periodic maintenance,7907,7907,2026-10-17,https://www.v3cars.com/skoda-cars/kylaq/maintenance-cost
+kylaq,petrol,AT,45000,36,periodic maintenance,6901,6901,2026-10-17,https://www.v3cars.com/skoda-cars/kylaq/maintenance-cost
+kylaq,petrol,AT,60000,48,major service (incl. ATF change),24366,24366,2026-10-17,https://www.v3cars.com/skoda-cars/kylaq/maintenance-cost
+kylaq,petrol,AT,75000,60,periodic maintenance,6901,6901,2026-10-17,https://www.v3cars.com/skoda-cars/kylaq/maintenance-cost
+kushaq,petrol,MT,1000,1,free inspection,0,0,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,MT,7500,6,free inspection,0,0,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,MT,15000,12,periodic maintenance (labour free),4188,4188,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,MT,30000,24,periodic maintenance,8314,8314,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,MT,45000,36,periodic maintenance,7209,7209,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,MT,60000,48,major service,11993,11993,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,MT,75000,60,periodic maintenance,7209,7209,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,AT,1000,1,free inspection,0,0,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,AT,7500,6,free inspection,0,0,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,AT,15000,12,periodic maintenance (labour free),4188,4188,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,AT,30000,24,periodic maintenance,8215,8215,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,AT,45000,36,periodic maintenance,7209,7209,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,AT,60000,48,major service (incl. ATF change),24692,24692,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,AT,75000,60,periodic maintenance,7209,7209,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,DSG,1000,1,free inspection,0,0,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,DSG,7500,6,free inspection,0,0,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,DSG,15000,12,periodic maintenance (labour free),4661,4661,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,DSG,30000,24,periodic maintenance,8685,8685,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,DSG,45000,36,periodic maintenance,7682,7682,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,DSG,60000,48,major service,14657,14657,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+kushaq,petrol,DSG,75000,60,periodic maintenance,7682,7682,2026-10-17,https://www.v3cars.com/skoda-cars/kushaq/maintenance-cost
+slavia,petrol,MT,1000,1,free inspection,0,0,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,MT,7500,6,free inspection,0,0,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,MT,15000,12,periodic maintenance (labour free),4188,4188,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,MT,30000,24,periodic maintenance,8232,8232,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,MT,45000,36,periodic maintenance,7127,7127,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,MT,60000,48,major service,11911,11911,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,MT,75000,60,periodic maintenance,7127,7127,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,AT,1000,1,free inspection,0,0,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,AT,7500,6,free inspection,0,0,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,AT,15000,12,periodic maintenance (labour free),4188,4188,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,AT,30000,24,periodic maintenance,8133,8133,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,AT,45000,36,periodic maintenance,7127,7127,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,AT,60000,48,major service (incl. ATF change),24610,24610,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,AT,75000,60,periodic maintenance,7127,7127,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,DSG,1000,1,free inspection,0,0,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,DSG,7500,6,free inspection,0,0,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,DSG,15000,12,periodic maintenance (labour free),4661,4661,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,DSG,30000,24,periodic maintenance,8603,8603,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,DSG,45000,36,periodic maintenance,7600,7600,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,DSG,60000,48,major service,14575,14575,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+slavia,petrol,DSG,75000,60,periodic maintenance,7600,7600,2026-10-17,https://www.v3cars.com/skoda-cars/slavia/maintenance-cost
+kodiaq,petrol,DSG,1000,1,free inspection,0,0,2026-10-17,https://www.v3cars.com/skoda-cars/kodiaq/maintenance-cost
+kodiaq,petrol,DSG,7500,6,free inspection,0,0,2026-10-17,https://www.v3cars.com/skoda-cars/kodiaq/maintenance-cost
+kodiaq,petrol,DSG,15000,12,periodic maintenance,8255,8255,2026-10-17,https://www.v3cars.com/skoda-cars/kodiaq/maintenance-cost
+kodiaq,petrol,DSG,30000,24,periodic maintenance,21466,21466,2026-10-17,https://www.v3cars.com/skoda-cars/kodiaq/maintenance-cost
+kodiaq,petrol,DSG,45000,36,periodic maintenance,14693,14693,2026-10-17,https://www.v3cars.com/skoda-cars/kodiaq/maintenance-cost
+kodiaq,petrol,DSG,60000,48,major service,34360,34360,2026-10-17,https://www.v3cars.com/skoda-cars/kodiaq/maintenance-cost
+kodiaq,petrol,DSG,75000,60,periodic maintenance,14693,14693,2026-10-17,https://www.v3cars.com/skoda-cars/kodiaq/maintenance-cost

@@ -1,0 +1,461 @@
+[
+ {
+  "id": 0,
+  "text": "Škoda Kodiaq > Overview\n\nThe second-generation Kodiaq is Škoda's full-size SUV. Trims: Lounge, Sportline and Selection L&K. Lounge is a 5-seater; Sportline and Selection L&K are 7-seaters.",
+  "model": "kodiaq",
+  "doc_type": "brochure",
+  "source": "brochure/kodiaq-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Kodiaq > Overview"
+ },
+ {
+  "id": 1,
+  "text": "Škoda Kodiaq > Engine and gearbox\n\nEvery Kodiaq uses a 2.0 TSI turbo-petrol engine with 150 kW (204 PS) and 320 Nm, a 7-speed DSG automatic and 4x4.",
+  "model": "kodiaq",
+  "doc_type": "brochure",
+  "source": "brochure/kodiaq-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Kodiaq > Engine and gearbox"
+ },
+ {
+  "id": 2,
+  "text": "Škoda Kodiaq > Safety\n\nThe Kodiaq has up to 9 airbags (the count depends on the variant), ESC, ABS, a multi-collision brake, hill descent control and driver attention alert. Sportline and Selection L&K add ADAS features (Front Assist, Side Assist and Exit Warning), a 360-degree camera and Intelligent Park Assist.",
+  "model": "kodiaq",
+  "doc_type": "brochure",
+  "source": "brochure/kodiaq-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Kodiaq > Safety"
+ },
+ {
+  "id": 3,
+  "text": "Škoda Kodiaq > Comfort and infotainment\n\nThe Kodiaq has a 32.77 cm (12.9-inch) touchscreen and a 26.03 cm (10.25-inch) Virtual Cockpit. Selection L&K adds ventilated and massaging front seats. Matrix LED headlights are fitted.",
+  "model": "kodiaq",
+  "doc_type": "brochure",
+  "source": "brochure/kodiaq-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Kodiaq > Comfort and infotainment"
+ },
+ {
+  "id": 4,
+  "text": "Škoda Kushaq > Overview\n\nThe Kushaq is Škoda's mid-size SUV, updated with a 2026 facelift. It has a 5-star Global NCAP safety rating. Trims: Classic+, Signature, Sportline, Prestige and Monte Carlo.",
+  "model": "kushaq",
+  "doc_type": "brochure",
+  "source": "brochure/kushaq-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Kushaq > Overview"
+ },
+ {
+  "id": 5,
+  "text": "Škoda Kushaq > Engines and gearboxes\n\nThe 1.0 TSI turbo-petrol (85 kW, 115 PS, 178 Nm) comes with a 6-speed manual or an 8-speed torque-converter automatic. The 1.5 TSI turbo-petrol (110 kW, 150 PS, 250 Nm) comes with a 7-speed DSG automatic and has disc brakes on all four wheels.",
+  "model": "kushaq",
+  "doc_type": "brochure",
+  "source": "brochure/kushaq-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Kushaq > Engines and gearboxes"
+ },
+ {
+  "id": 6,
+  "text": "Škoda Kushaq > Safety\n\nŠkoda lists 25 active and passive safety features as standard across the range, and up to 40 on the top variants. Every Kushaq has 6 airbags, ESC, ABS with EBD, traction control, rear parking sensors and ISOFIX mounts. Hill-hold assist is standard on the automatic Classic+ and on every Signature and above.\n\nSignature adds a tyre pressure monitoring system, a rear parking camera, front and rear parking sensors and LED fog lamps with a cornering function. Prestige adds an anti-theft alarm.",
+  "model": "kushaq",
+  "doc_type": "brochure",
+  "source": "brochure/kushaq-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Kushaq > Safety"
+ },
+ {
+  "id": 7,
+  "text": "Škoda Kushaq > Comfort and convenience\n\nClassic+ already has automatic climate control with an air purifier and rear vents, an electric sunroof and rain-sensing wipers. Signature adds keyless entry, cruise control, a cooled glove box and 60:40 split rear seats. Prestige adds a panoramic sunroof, powered and ventilated front seats, a rear seat massage function and beige leatherette upholstery. Monte Carlo has a black cabin with red trim and red stitching.",
+  "model": "kushaq",
+  "doc_type": "brochure",
+  "source": "brochure/kushaq-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Kushaq > Comfort and convenience"
+ },
+ {
+  "id": 8,
+  "text": "Škoda Kushaq > Infotainment\n\nClassic+ has a 7-inch touchscreen with wired Android Auto and Apple CarPlay and 6 speakers. Signature adds a 10.1-inch touchscreen with wireless Android Auto and Apple CarPlay, an 8-inch digital driver's display and a 15W wireless phone charger. Prestige adds a Škoda sound system with subwoofer and amplifier.",
+  "model": "kushaq",
+  "doc_type": "brochure",
+  "source": "brochure/kushaq-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Kushaq > Infotainment"
+ },
+ {
+  "id": 9,
+  "text": "Škoda Kushaq > Exterior\n\nEvery Kushaq has automatic LED headlamps, LED tail lamps and 16-inch alloy wheels. Signature gets 17-inch silver alloys and an illuminated light band on the grille. Sportline has 17-inch black alloys and Sportline badging. Monte Carlo has 17-inch dual-tone alloys, red grille stripes and Monte Carlo badges.",
+  "model": "kushaq",
+  "doc_type": "brochure",
+  "source": "brochure/kushaq-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Kushaq > Exterior"
+ },
+ {
+  "id": 10,
+  "text": "Škoda Kylaq > Overview\n\nThe Kylaq is Škoda's compact SUV for India, under 4 metres long. It has a 5-star Bharat NCAP safety rating. It is sold in seven trims: Classic, Classic+, Signature, Signature+, Sportline, Prestige and Prestige+.",
+  "model": "kylaq",
+  "doc_type": "brochure",
+  "source": "brochure/kylaq-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Kylaq > Overview"
+ },
+ {
+  "id": 11,
+  "text": "Škoda Kylaq > Engine and gearbox\n\nEvery Kylaq uses the 1.0 TSI turbo-petrol engine with 85 kW (115 PS) and 178 Nm. It comes with a 6-speed manual or a 6-speed torque-converter automatic. The automatic is available from the Classic+ trim upwards; the base Classic is manual only.",
+  "model": "kylaq",
+  "doc_type": "brochure",
+  "source": "brochure/kylaq-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Kylaq > Engine and gearbox"
+ },
+ {
+  "id": 12,
+  "text": "Škoda Kylaq > Safety\n\nStandard on every trim: 6 airbags, ABS with EBD, Electronic Stability Control (ESC), traction control, brake disc wiping, roll-over protection, rear parking sensors and ISOFIX child-seat mounts.\n\nSignature adds a tyre pressure monitoring system (TPMS). Signature+ adds hill-hold assist and a rear parking camera. Sportline adds LED fog lamps with a cornering function. Prestige adds an anti-theft alarm.",
+  "model": "kylaq",
+  "doc_type": "brochure",
+  "source": "brochure/kylaq-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Kylaq > Safety"
+ },
+ {
+  "id": 13,
+  "text": "Škoda Kylaq > Comfort and convenience\n\nClassic+ adds a single-pane electric sunroof, cruise control, an auto-dimming inside mirror, steering-mounted controls and one-touch driver window. Signature adds rear AC vents, a cooled glove box, rain-sensing wipers, a rear wiper and washer, and paddle shifters on the automatic. Signature+ adds keyless entry and go, a leather-wrapped steering wheel and 60:40 split-folding rear seats. Prestige adds ventilated front seats and leatherette upholstery. Prestige+ adds 6-way powered front seats.",
+  "model": "kylaq",
+  "doc_type": "brochure",
+  "source": "brochure/kylaq-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Kylaq > Comfort and convenience"
+ },
+ {
+  "id": 14,
+  "text": "Škoda Kylaq > Infotainment\n\nSignature has a 7-inch touchscreen with wired Android Auto and Apple CarPlay. Signature+ upgrades to a 10-inch touchscreen with wireless Android Auto and Apple CarPlay, an 8-inch digital instrument cluster and connected-car features. Sportline and Prestige add a wireless phone charger.",
+  "model": "kylaq",
+  "doc_type": "brochure",
+  "source": "brochure/kylaq-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Kylaq > Infotainment"
+ },
+ {
+  "id": 15,
+  "text": "Škoda Kylaq > Exterior\n\nClassic has 16-inch steel wheels. Signature gets 16-inch silver alloy wheels. Sportline has 17-inch black alloys, a rear spoiler and LED projector headlamps. Prestige has 17-inch dual-tone alloys and LED projector headlamps.",
+  "model": "kylaq",
+  "doc_type": "brochure",
+  "source": "brochure/kylaq-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Kylaq > Exterior"
+ },
+ {
+  "id": 16,
+  "text": "Škoda Octavia RS > Overview\n\nThe Octavia RS is Škoda's performance sedan, imported in limited numbers. It comes in one fully loaded version. Colours: Mamba Green, Magic Black and Velvet Red.",
+  "model": "octavia-rs",
+  "doc_type": "brochure",
+  "source": "brochure/octavia-rs-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Octavia RS > Overview"
+ },
+ {
+  "id": 17,
+  "text": "Škoda Octavia RS > Engine and performance\n\nA 2.0 TSI turbo-petrol engine with 195 kW (265 PS) and 370 Nm drives the front wheels through a 7-speed DSG automatic. It reaches 0-100 km/h in 6.4 seconds, and top speed is electronically limited to 250 km/h.",
+  "model": "octavia-rs",
+  "doc_type": "brochure",
+  "source": "brochure/octavia-rs-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Octavia RS > Engine and performance"
+ },
+ {
+  "id": 18,
+  "text": "Škoda Octavia RS > Safety and driver assistance\n\nThe Octavia RS has 10 airbags, adaptive cruise control, Front Assist, Lane Assist, blind spot detection, ESC, a 360-degree Area View camera and Intelligent Park Assist.",
+  "model": "octavia-rs",
+  "doc_type": "brochure",
+  "source": "brochure/octavia-rs-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Octavia RS > Safety and driver assistance"
+ },
+ {
+  "id": 19,
+  "text": "Škoda Octavia RS > Comfort and infotainment\n\nHeated, power-adjustable front sports seats with memory and massage, a head-up display, a Virtual Cockpit, three-zone Climatronic air conditioning and ambient lighting. A 32.77 cm touchscreen with wireless Apple CarPlay and Android Auto, a Canton 675W sound system, wireless charging and USB-C ports.",
+  "model": "octavia-rs",
+  "doc_type": "brochure",
+  "source": "brochure/octavia-rs-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Octavia RS > Comfort and infotainment"
+ },
+ {
+  "id": 20,
+  "text": "Škoda Octavia RS > Exterior\n\nFull LED Matrix headlights with Adaptive Front Lighting, LED rear lights with animated indicators, RS bumpers, a sports exhaust with two visible tailpipes and gloss black accents.",
+  "model": "octavia-rs",
+  "doc_type": "brochure",
+  "source": "brochure/octavia-rs-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Octavia RS > Exterior"
+ },
+ {
+  "id": 21,
+  "text": "Škoda Slavia > Overview\n\nThe Slavia is Škoda's mid-size sedan, updated for 2026. It has a 5-star Global NCAP safety rating. Trims: Classic, Classic+, Signature, Sportline, Prestige and Monte Carlo. The 1.5 TSI engine is offered only on Prestige and Monte Carlo.",
+  "model": "slavia",
+  "doc_type": "brochure",
+  "source": "brochure/slavia-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Slavia > Overview"
+ },
+ {
+  "id": 22,
+  "text": "Škoda Slavia > Engines and gearboxes\n\nThe 1.0 TSI turbo-petrol (85 kW, 115 PS, 178 Nm) comes with a 6-speed manual or an 8-speed torque-converter automatic. The 1.5 TSI turbo-petrol (110 kW, 150 PS, 250 Nm) comes with a 7-speed DSG automatic and Active Cylinder Technology.",
+  "model": "slavia",
+  "doc_type": "brochure",
+  "source": "brochure/slavia-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Slavia > Engines and gearboxes"
+ },
+ {
+  "id": 23,
+  "text": "Škoda Slavia > Safety\n\nStandard on every Slavia: 6 airbags, stability control, traction control, a tyre pressure monitor, ISOFIX mounts and rear parking sensors. Classic+ automatic adds hill-hold control. Signature adds a rear-view camera and front and rear parking sensors. Sportline adds a 360-degree camera.",
+  "model": "slavia",
+  "doc_type": "brochure",
+  "source": "brochure/slavia-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Slavia > Safety"
+ },
+ {
+  "id": 24,
+  "text": "Škoda Slavia > Comfort and convenience\n\nClassic has automatic climate control, a height-adjustable driver's seat, power windows and auto start/stop. Classic+ adds a single-pane sunroof, cruise control, rain-sensing wipers, an auto-dimming mirror and paddle shifters on the automatic. Signature adds ambient lighting, keyless entry, push-button start, 60:40 split folding rear seats, a cooled glove box and rear AC vents. Prestige adds powered and ventilated front seats, a rear seat massage function and leatherette upholstery.",
+  "model": "slavia",
+  "doc_type": "brochure",
+  "source": "brochure/slavia-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Slavia > Comfort and convenience"
+ },
+ {
+  "id": 25,
+  "text": "Škoda Slavia > Infotainment\n\nClassic has a 7-inch touchscreen with wired smartphone connectivity and 4 speakers. Signature adds a 10.1-inch touchscreen with wireless Apple CarPlay and Android Auto, a Google AI assistant, an 8-speaker sound system and a wireless phone charger. Prestige adds a 10.25-inch digital driver's display.",
+  "model": "slavia",
+  "doc_type": "brochure",
+  "source": "brochure/slavia-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Slavia > Infotainment"
+ },
+ {
+  "id": 26,
+  "text": "Škoda Slavia > Exterior\n\nClassic has halogen headlamps and 15-inch steel wheels. Classic+ adds 16-inch alloy wheels, full-LED headlamps, LED fog lamps and sequential rear indicators. Sportline has 16-inch black alloys and a boot lip spoiler. Monte Carlo adds red grille accents and red brake calipers.",
+  "model": "slavia",
+  "doc_type": "brochure",
+  "source": "brochure/slavia-brochure-sample.md",
+  "page": null,
+  "section": "Škoda Slavia > Exterior"
+ },
+ {
+  "id": 27,
+  "text": "Škoda India general FAQ > Which Škoda models are on sale in India?\n\nKylaq (compact SUV), Kushaq (mid-size SUV), Slavia (mid-size sedan), Kodiaq (full-size SUV with 5 or 7 seats) and Octavia RS (performance sedan). All of them are petrol cars. The Superb is still shown on the Škoda India website but is reported as discontinued, so check with a dealer.",
+  "model": "all",
+  "doc_type": "faq",
+  "source": "faq/skoda-general-faq-sample.md",
+  "page": null,
+  "section": "Škoda India general FAQ > Which Škoda models are on sale in India?"
+ },
+ {
+  "id": 28,
+  "text": "Škoda India general FAQ > Does Škoda sell an electric car in India?\n\nNot yet. The Enyaq electric SUV is expected in India, but Škoda has not announced its launch date, price or India specifications. Any figures you see are media estimates.",
+  "model": "all",
+  "doc_type": "faq",
+  "source": "faq/skoda-general-faq-sample.md",
+  "page": null,
+  "section": "Škoda India general FAQ > Does Škoda sell an electric car in India?"
+ },
+ {
+  "id": 29,
+  "text": "Škoda India general FAQ > How do I book a test drive?\n\nBook a test drive online on the model page at skoda-auto.co.in (for example skoda-auto.co.in/shopping/kylaq-book-a-test-drive), at any Škoda showroom, or ask this assistant to arrange one for you.",
+  "model": "all",
+  "doc_type": "faq",
+  "source": "faq/skoda-general-faq-sample.md",
+  "page": null,
+  "section": "Škoda India general FAQ > How do I book a test drive?"
+ },
+ {
+  "id": 30,
+  "text": "Škoda India general FAQ > How do I get a brochure?\n\nDownload brochures from skoda-auto.co.in/shopping/download-a-brochure, or ask this assistant to send a brochure request.",
+  "model": "all",
+  "doc_type": "faq",
+  "source": "faq/skoda-general-faq-sample.md",
+  "page": null,
+  "section": "Škoda India general FAQ > How do I get a brochure?"
+ },
+ {
+  "id": 31,
+  "text": "Škoda India general FAQ > Where can I find a Škoda dealer?\n\nUse the official dealer locator at dealers.skoda-auto.co.in, or tell this assistant your city, area or pincode to get the nearest showrooms and service centres.",
+  "model": "all",
+  "doc_type": "faq",
+  "source": "faq/skoda-general-faq-sample.md",
+  "page": null,
+  "section": "Škoda India general FAQ > Where can I find a Škoda dealer?"
+ },
+ {
+  "id": 32,
+  "text": "Škoda India general FAQ > Are prices the same everywhere?\n\nEx-showroom prices can vary slightly between states, and the on-road price depends on your state's road tax, registration, insurance and other charges. Ask this assistant for an estimated on-road price for your city, and confirm the final price with the dealer.",
+  "model": "all",
+  "doc_type": "faq",
+  "source": "faq/skoda-general-faq-sample.md",
+  "page": null,
+  "section": "Škoda India general FAQ > Are prices the same everywhere?"
+ },
+ {
+  "id": 33,
+  "text": "Škoda service FAQ > How often should my car be serviced?\n\nNew Škoda cars get two free inspections, at 1,000 km or 1 month and at 7,500 km or 6 months. After that, periodic maintenance is due every 15,000 km or 12 months, whichever comes first.",
+  "model": "all",
+  "doc_type": "service",
+  "source": "service/skoda-service-faq-sample.md",
+  "page": null,
+  "section": "Škoda service FAQ > How often should my car be serviced?"
+ },
+ {
+  "id": 34,
+  "text": "Škoda service FAQ > What is done at a periodic service?\n\nEvery periodic service replaces the engine oil, oil filter, drain plug washer and cabin filter, and includes sunroof lubrication on cars with a sunroof. Every 30,000 km the air filter and brake fluid are also replaced. At 60,000 km the spark plugs and V-belt are replaced. Automatic (torque-converter) cars also get an automatic transmission fluid (ATF) change at 60,000 km, which makes that service noticeably more expensive.",
+  "model": "all",
+  "doc_type": "service",
+  "source": "service/skoda-service-faq-sample.md",
+  "page": null,
+  "section": "Škoda service FAQ > What is done at a periodic service?"
+ },
+ {
+  "id": 35,
+  "text": "Škoda service FAQ > How do I book a service?\n\nBook online at skoda-auto.co.in/service-and-parts/book-service-appointment, or call your nearest Škoda service centre. You can find service centres, their phone numbers and opening hours with the dealer locator at dealers.skoda-auto.co.in, or ask this assistant for the nearest one.",
+  "model": "all",
+  "doc_type": "service",
+  "source": "service/skoda-service-faq-sample.md",
+  "page": null,
+  "section": "Škoda service FAQ > How do I book a service?"
+ },
+ {
+  "id": 36,
+  "text": "Škoda service FAQ > What services do service centres offer?\n\nAuthorised Škoda service centres handle periodic maintenance, repairs and genuine accessories. Some outlets are combined showroom and service centres.",
+  "model": "all",
+  "doc_type": "service",
+  "source": "service/skoda-service-faq-sample.md",
+  "page": null,
+  "section": "Škoda service FAQ > What services do service centres offer?"
+ },
+ {
+  "id": 37,
+  "text": "Škoda service FAQ > What should I do if my car breaks down?\n\nCall Škoda Assist, the 24x7 Pan-India roadside assistance included for 4 years with new cars. Details are at skoda-auto.co.in/service-and-parts/roadside-assistance.",
+  "model": "all",
+  "doc_type": "service",
+  "source": "service/skoda-service-faq-sample.md",
+  "page": null,
+  "section": "Škoda service FAQ > What should I do if my car breaks down?"
+ },
+ {
+  "id": 38,
+  "text": "Škoda service FAQ > Škoda customer care\n\nŠkoda India customer care toll-free number: 1800 2700 260.",
+  "model": "all",
+  "doc_type": "service",
+  "source": "service/skoda-service-faq-sample.md",
+  "page": null,
+  "section": "Škoda service FAQ > Škoda customer care"
+ },
+ {
+  "id": 39,
+  "text": "Škoda Kodiaq technical specifications > Powertrain\n\n| Powertrain | Engine | Power | Torque | Gearbox | Drive | Claimed mileage | Fuel tank |\n|---|---|---|---|---|---|---|---|\n| 2.0 TSI DSG | 1984 cc turbo-petrol | 204 PS (150 kW) | 320 Nm | 7-speed DSG automatic | 4x4 | 14.86 kmpl | not published for the India model |",
+  "model": "kodiaq",
+  "doc_type": "specs",
+  "source": "specs/kodiaq-specs-sample.md",
+  "page": null,
+  "section": "Škoda Kodiaq technical specifications > Powertrain"
+ },
+ {
+  "id": 40,
+  "text": "Škoda Kodiaq technical specifications > Seating\n\n| Variant | Seats |\n|---|---|\n| Lounge | 5 |\n| Sportline | 7 |\n| Selection L&K | 7 |",
+  "model": "kodiaq",
+  "doc_type": "specs",
+  "source": "specs/kodiaq-specs-sample.md",
+  "page": null,
+  "section": "Škoda Kodiaq technical specifications > Seating"
+ },
+ {
+  "id": 41,
+  "text": "Škoda Kushaq technical specifications > Powertrain\n\n| Powertrain | Engine | Power | Torque | Gearbox | Claimed mileage | Fuel tank |\n|---|---|---|---|---|---|---|\n| 1.0 TSI MT | 999 cc turbo-petrol | 115 PS (85 kW) | 178 Nm | 6-speed manual | 19.66 kmpl (Sportline 19.76) | 50 litres |\n| 1.0 TSI AT | 999 cc turbo-petrol | 115 PS (85 kW) | 178 Nm | 8-speed torque-converter automatic | 19.09 kmpl | 50 litres |\n| 1.5 TSI DSG | 1498 cc turbo-petrol | 150 PS (110 kW) | 250 Nm | 7-speed DSG automatic | 18.72 kmpl | 50 litres |",
+  "model": "kushaq",
+  "doc_type": "specs",
+  "source": "specs/kushaq-specs-sample.md",
+  "page": null,
+  "section": "Škoda Kushaq technical specifications > Powertrain"
+ },
+ {
+  "id": 42,
+  "text": "Škoda Kylaq technical specifications > Powertrain\n\n| Powertrain | Engine | Power | Torque | Gearbox | Claimed mileage | Fuel tank |\n|---|---|---|---|---|---|---|\n| 1.0 TSI MT | 999 cc turbo-petrol | 115 PS (85 kW) | 178 Nm | 6-speed manual | 19.68 kmpl | 45 litres |\n| 1.0 TSI AT | 999 cc turbo-petrol | 115 PS (85 kW) | 178 Nm | 6-speed torque-converter automatic | 19.05 kmpl | 45 litres |",
+  "model": "kylaq",
+  "doc_type": "specs",
+  "source": "specs/kylaq-specs-sample.md",
+  "page": null,
+  "section": "Škoda Kylaq technical specifications > Powertrain"
+ },
+ {
+  "id": 43,
+  "text": "Škoda Octavia RS technical specifications > Powertrain and performance\n\n| Powertrain | Engine | Power | Torque | Gearbox | Drive | 0-100 km/h | Top speed | Claimed mileage | Fuel tank |\n|---|---|---|---|---|---|---|---|---|---|\n| 2.0 TSI DSG | 1984 cc turbo-petrol | 265 PS (195 kW) | 370 Nm | 7-speed DSG automatic | front-wheel drive | 6.4 s | 250 km/h (limited) | not published | 50 litres |",
+  "model": "octavia-rs",
+  "doc_type": "specs",
+  "source": "specs/octavia-rs-specs-sample.md",
+  "page": null,
+  "section": "Škoda Octavia RS technical specifications > Powertrain and performance"
+ },
+ {
+  "id": 44,
+  "text": "Škoda Slavia technical specifications > Powertrain\n\n| Powertrain | Engine | Power | Torque | Gearbox | Claimed mileage | Fuel tank |\n|---|---|---|---|---|---|---|\n| 1.0 TSI MT | 999 cc turbo-petrol | 115 PS (85 kW) | 178 Nm | 6-speed manual | 19.76 kmpl | 45 litres |\n| 1.0 TSI AT | 999 cc turbo-petrol | 115 PS (85 kW) | 178 Nm | 8-speed torque-converter automatic | 19.5 kmpl | 45 litres |\n| 1.5 TSI DSG | 1498 cc turbo-petrol | 150 PS (110 kW) | 250 Nm | 7-speed DSG automatic | 18.79 kmpl | 45 litres |",
+  "model": "slavia",
+  "doc_type": "specs",
+  "source": "specs/slavia-specs-sample.md",
+  "page": null,
+  "section": "Škoda Slavia technical specifications > Powertrain"
+ },
+ {
+  "id": 45,
+  "text": "Škoda Super Care: warranty and ownership package > Standard warranty\n\nŠkoda Super Care lists a 4-year / 100,000 km standard warranty. The Kushaq, Slavia and Kodiaq model pages state the same. Check the warranty booklet or your dealer for the exact terms for your car.",
+  "model": "all",
+  "doc_type": "warranty",
+  "source": "warranty/skoda-warranty-sample.md",
+  "page": null,
+  "section": "Škoda Super Care: warranty and ownership package > Standard warranty"
+ },
+ {
+  "id": 46,
+  "text": "Škoda Super Care: warranty and ownership package > Extended warranty\n\nExtended warranty (EW) can extend cover up to the 6th year of ownership. Terms and prices are on skoda-auto.co.in/skoda-super-care/skoda-extended-warranty. Škoda also offers an Anytime Warranty, described at skoda-auto.co.in/skoda-super-care/anytime-warranty. Ask your dealer for the exact cover and cost for your car.",
+  "model": "all",
+  "doc_type": "warranty",
+  "source": "warranty/skoda-warranty-sample.md",
+  "page": null,
+  "section": "Škoda Super Care: warranty and ownership package > Extended warranty"
+ },
+ {
+  "id": 47,
+  "text": "Škoda Super Care: warranty and ownership package > Parts warranty\n\nŠkoda Super Care lists a parts warranty of 2 years or unlimited kilometres.",
+  "model": "all",
+  "doc_type": "warranty",
+  "source": "warranty/skoda-warranty-sample.md",
+  "page": null,
+  "section": "Škoda Super Care: warranty and ownership package > Parts warranty"
+ },
+ {
+  "id": 48,
+  "text": "Škoda Super Care: warranty and ownership package > Labour-free services\n\nŠkoda Super Care includes 4 labour-free services in the first two years. You still pay for parts and consumables such as engine oil and filters.",
+  "model": "all",
+  "doc_type": "warranty",
+  "source": "warranty/skoda-warranty-sample.md",
+  "page": null,
+  "section": "Škoda Super Care: warranty and ownership package > Labour-free services"
+ },
+ {
+  "id": 49,
+  "text": "Škoda Super Care: warranty and ownership package > Roadside assistance\n\nNew cars include 4 years of 24x7 Pan-India roadside assistance (Škoda Assist). Details: skoda-auto.co.in/service-and-parts/roadside-assistance.",
+  "model": "all",
+  "doc_type": "warranty",
+  "source": "warranty/skoda-warranty-sample.md",
+  "page": null,
+  "section": "Škoda Super Care: warranty and ownership package > Roadside assistance"
+ },
+ {
+  "id": 50,
+  "text": "Škoda Super Care: warranty and ownership package > Maintenance plans\n\nŠkoda offers Maintenance Plans. The Super Care page does not list their contents or prices, so ask your dealer which plans are available for your model.",
+  "model": "all",
+  "doc_type": "warranty",
+  "source": "warranty/skoda-warranty-sample.md",
+  "page": null,
+  "section": "Škoda Super Care: warranty and ownership package > Maintenance plans"
+ }
+]

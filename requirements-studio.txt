@@ -1,0 +1,10 @@
+# LangGraph Studio dev server: a development tool, installed in its OWN venv (.venv-studio) because it needs
+# structlog < 26 while the app pins 26.1.0 (the app works with both; the test suite passes in both venvs).
+#
+#   py -3.14 -m venv .venv-studio
+#   (requirements.txt without the structlog line)  +  this file:
+#   .venv-studio\Scripts\python.exe -m pip install -r requirements-studio.txt
+#
+langgraph-cli[inmem]==0.4.37
+langgraph-api==0.16.2            # pip otherwise backtracks to an end-of-life 0.10.x
+langgraph-runtime-inmem==0.36.2

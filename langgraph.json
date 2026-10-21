@@ -1,0 +1,6 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "skoda_agent": "./app/graph/studio.py:graph"
+  }
+}

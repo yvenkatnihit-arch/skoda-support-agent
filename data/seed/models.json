@@ -1,0 +1,14 @@
+[
+  {"id": "kylaq", "name": "Kylaq", "body_type": "SUV", "segment": "compact SUV (sub-4m)", "launch_year": 2025, "is_ev": false, "status": "on_sale",
+   "notes": "5-star Bharat NCAP rating. 1.0 TSI petrol with 6-speed MT or 6-speed torque-converter AT."},
+  {"id": "kushaq", "name": "Kushaq", "body_type": "SUV", "segment": "mid-size SUV", "launch_year": 2021, "is_ev": false, "status": "on_sale",
+   "notes": "2026 facelift. 5-star Global NCAP rating. 1.0 TSI with 6-speed MT or 8-speed AT; 1.5 TSI with 7-speed DSG."},
+  {"id": "slavia", "name": "Slavia", "body_type": "sedan", "segment": "mid-size sedan", "launch_year": 2022, "is_ev": false, "status": "on_sale",
+   "notes": "2026 facelift. 5-star Global NCAP rating. 1.0 TSI with 6-speed MT or 8-speed AT; 1.5 TSI with 7-speed DSG."},
+  {"id": "kodiaq", "name": "Kodiaq", "body_type": "SUV", "segment": "full-size SUV (5 or 7 seats)", "launch_year": 2025, "is_ev": false, "status": "on_sale",
+   "notes": "Second generation. 2.0 TSI petrol, 7-speed DSG, 4x4. Lounge is a 5-seater; Sportline and Selection L&K are 7-seaters."},
+  {"id": "octavia-rs", "name": "Octavia RS", "body_type": "sedan", "segment": "performance sedan", "launch_year": 2025, "is_ev": false, "status": "on_sale",
+   "notes": "Imported (CBU) in limited numbers. 2.0 TSI petrol, 7-speed DSG, 0-100 km/h in 6.4 s. Skoda has not published an ARAI mileage figure."},
+  {"id": "enyaq", "name": "Enyaq", "body_type": "SUV", "segment": "electric SUV", "launch_year": 2026, "is_ev": true, "status": "upcoming",
+   "notes": "Not yet launched in India. Price, battery and range are indicative media estimates, not official figures."}
+]

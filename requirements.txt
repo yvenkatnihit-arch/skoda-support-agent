@@ -1,0 +1,29 @@
+# Graph + LLM
+langgraph==1.2.16
+langchain-core==1.6.12
+langchain-google-genai==4.4.2
+langsmith==0.14.11
+# langgraph-checkpoint dependency. 1.13.0's compiled module is blocked by Windows Application Control
+# on this machine; 1.12.2 loads fine.
+ormsgpack==1.12.2
+
+# Data, retrieval, ingestion
+pandas==3.0.6
+faiss-cpu==1.15.1
+numpy==2.5.4
+pypdf==6.21.1
+beautifulsoup4==4.15.0
+httpx==0.28.1
+
+# Config + logging
+pydantic==2.14.1
+pydantic-settings==2.16.0
+structlog==26.1.0
+
+# API + UI
+fastapi==0.143.3
+uvicorn==0.54.0
+streamlit==1.66.0
+
+# Tests
+pytest==9.1.1

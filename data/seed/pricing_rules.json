@@ -1,0 +1,43 @@
+{
+  "as_of": "2026-10-17",
+  "insurance": {
+    "percent_of_ex_showroom": {"petrol": 3.5, "diesel": 3.8, "electric": 3.0},
+    "source_url": "ASSUMPTION - typical first-year comprehensive premium; replace with an insurer or dealer quote",
+    "is_assumption": true
+  },
+  "tcs": {
+    "threshold": 1000000,
+    "rate_percent": 1.0,
+    "note": "1% of the full ex-showroom price when it exceeds Rs 10 lakh (Income-tax Act 2025, s.394(1); formerly s.206C(1F)).",
+    "source_url": "https://blog.tdsman.com/2026/02/section-206c1f-tcs-on-sale-of-motor-vehicles-and-luxury-goods/"
+  },
+  "registration": {
+    "registration_fee": 600,
+    "hsrp_fee": 1000,
+    "note": "Registration fee per Central Motor Vehicles Rules; HSRP fee varies by state.",
+    "source_url": "https://www.joinekatra.com/calculators/road-tax/telangana"
+  },
+  "fastag": {
+    "fee": 500,
+    "source_url": "ASSUMPTION - typical issuance fee plus security deposit and minimum balance; varies by bank",
+    "is_assumption": true
+  },
+  "handling_charges": {
+    "fee": 0,
+    "note": "Separate handling or logistics charges are not shown; ask the dealer if any apply.",
+    "source_url": "ASSUMPTION",
+    "is_assumption": true
+  },
+  "accessories": [
+    {"id": "kushaq-dashcam", "model_id": "kushaq", "name": "Dashcam", "price": 10999, "source_url": "https://gaadify.com/skoda-kushaq-accessories-list-with-prices/"},
+    {"id": "kushaq-front-parking-sensors", "model_id": "kushaq", "name": "Front parking sensors", "price": 7700, "source_url": "https://gaadify.com/skoda-kushaq-slavia-get-new-accessories/"},
+    {"id": "kushaq-underbody-lighting", "model_id": "kushaq", "name": "Underbody lighting", "price": 4700, "source_url": "https://gaadify.com/skoda-kushaq-slavia-get-new-accessories/"},
+    {"id": "kushaq-black-grille-garnish", "model_id": "kushaq", "name": "Black front grille garnish", "price": 3200, "source_url": "https://gaadify.com/skoda-kushaq-slavia-get-new-accessories/"},
+    {"id": "kushaq-seat-covers", "model_id": "kushaq", "name": "Seat covers (from)", "price": 10499, "source_url": "https://gaadify.com/skoda-kushaq-accessories-list-with-prices/"},
+    {"id": "slavia-dashcam", "model_id": "slavia", "name": "Dashcam", "price": 10999, "source_url": "https://gaadify.com/skoda-slavia-accessories-detailed-with-prices/"},
+    {"id": "slavia-front-parking-sensors", "model_id": "slavia", "name": "Front parking sensors", "price": 7300, "source_url": "https://gaadify.com/skoda-kushaq-slavia-get-new-accessories/"},
+    {"id": "slavia-underbody-lighting", "model_id": "slavia", "name": "Underbody lighting", "price": 4700, "source_url": "https://gaadify.com/skoda-kushaq-slavia-get-new-accessories/"},
+    {"id": "slavia-black-grille-garnish", "model_id": "slavia", "name": "Black front grille garnish", "price": 3200, "source_url": "https://gaadify.com/skoda-kushaq-slavia-get-new-accessories/"},
+    {"id": "slavia-seat-covers", "model_id": "slavia", "name": "Seat covers (from)", "price": 10999, "source_url": "https://gaadify.com/skoda-slavia-accessories-detailed-with-prices/"}
+  ]
+}

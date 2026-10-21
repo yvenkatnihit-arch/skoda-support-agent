@@ -1,0 +1,99 @@
+{
+ "embedding_model": "gemini-embedding-2",
+ "dimension": 768,
+ "chunk_count": 51,
+ "built_at": "2026-10-19T06:59:47+00:00",
+ "sources": [
+  {
+   "file": "brochure/kodiaq-brochure-sample.md",
+   "doc_type": "brochure",
+   "model": "kodiaq",
+   "chunks": 4,
+   "sha256": "5583b5faf142a0c66839d3cec77b6a4edff275b359afe036a42651513828d626"
+  },
+  {
+   "file": "brochure/kushaq-brochure-sample.md",
+   "doc_type": "brochure",
+   "model": "kushaq",
+   "chunks": 6,
+   "sha256": "5118fc67384b9f327a3599efcd24a242f9415b586e41e5f9f94b78377211b93d"
+  },
+  {
+   "file": "brochure/kylaq-brochure-sample.md",
+   "doc_type": "brochure",
+   "model": "kylaq",
+   "chunks": 6,
+   "sha256": "42901ae0ed2a01f75419a7958b8cb65fabdee2aa1d9fe54655a2d187dc7356ea"
+  },
+  {
+   "file": "brochure/octavia-rs-brochure-sample.md",
+   "doc_type": "brochure",
+   "model": "octavia-rs",
+   "chunks": 5,
+   "sha256": "9aebc521772fc79a522961bc5c7bdd35e8a02bb638e3d47ccbd398a20c31754e"
+  },
+  {
+   "file": "brochure/slavia-brochure-sample.md",
+   "doc_type": "brochure",
+   "model": "slavia",
+   "chunks": 6,
+   "sha256": "0fb002c5837c1d70654aec5fb4a5d8c5de9c3b4dd20fc56da46ece64572c4016"
+  },
+  {
+   "file": "faq/skoda-general-faq-sample.md",
+   "doc_type": "faq",
+   "model": "all",
+   "chunks": 6,
+   "sha256": "7b97cbd4dcbcba4d4665dcad384dd53a6c7a88cbe634875281f6afd0088a6480"
+  },
+  {
+   "file": "service/skoda-service-faq-sample.md",
+   "doc_type": "service",
+   "model": "all",
+   "chunks": 6,
+   "sha256": "a364bb7676fbc21967b2e27209bb6177e3a4348e7747acc02dd0304793dacbde"
+  },
+  {
+   "file": "specs/kodiaq-specs-sample.md",
+   "doc_type": "specs",
+   "model": "kodiaq",
+   "chunks": 2,
+   "sha256": "3e2e91e05610915d0c338dbaf57284ba9e9517e6898a7f58df9fbab3409d8481"
+  },
+  {
+   "file": "specs/kushaq-specs-sample.md",
+   "doc_type": "specs",
+   "model": "kushaq",
+   "chunks": 1,
+   "sha256": "8c09fbe8dc18c981b2036da5bdeac0c1e1d994f3e8f8204a0d5a877bd505526f"
+  },
+  {
+   "file": "specs/kylaq-specs-sample.md",
+   "doc_type": "specs",
+   "model": "kylaq",
+   "chunks": 1,
+   "sha256": "969ba14d6ddde09594fabfde655be49b602ae1ffe23955a19aaadd7c4640d09c"
+  },
+  {
+   "file": "specs/octavia-rs-specs-sample.md",
+   "doc_type": "specs",
+   "model": "octavia-rs",
+   "chunks": 1,
+   "sha256": "0c3cb41a707ad6276beaf1fe5bc6f842406f177f785ee6f481c464ac55e6e279"
+  },
+  {
+   "file": "specs/slavia-specs-sample.md",
+   "doc_type": "specs",
+   "model": "slavia",
+   "chunks": 1,
+   "sha256": "deb84802ac2d5ae5f5e3f8b4cc57120ee2bc06c075bfc50018e0de70e57891d3"
+  },
+  {
+   "file": "warranty/skoda-warranty-sample.md",
+   "doc_type": "warranty",
+   "model": "all",
+   "chunks": 6,
+   "sha256": "8239210adbb5446600acd3b4ed70d42fa36d8b02c972a2c00065fd453e547082"
+  }
+ ]
+}

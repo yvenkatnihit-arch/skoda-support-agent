@@ -1,0 +1,42 @@
+id,model_id,name,fuel,transmission,engine_cc,power_ps,torque_nm,mileage_kmpl,battery_kwh,claimed_range_km,fuel_tank_l,ex_showroom_price,price_city,price_as_of,source_url,spec_source_url
+kylaq-classic-mt,kylaq,Classic,petrol,MT,999,115,178,19.68,,,45,759000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kylaq/variants.htm,https://www.skoda-auto.co.in/models/kylaq/kylaq
+kylaq-classic-plus-mt,kylaq,Classic+,petrol,MT,999,115,178,19.68,,,45,829000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kylaq/variants.htm,https://www.skoda-auto.co.in/models/kylaq/kylaq
+kylaq-classic-plus-at,kylaq,Classic+,petrol,AT,999,115,178,19.05,,,45,929000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kylaq/variants.htm,https://www.skoda-auto.co.in/models/kylaq/kylaq
+kylaq-signature-mt,kylaq,Signature,petrol,MT,999,115,178,19.68,,,45,949000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kylaq/variants.htm,https://www.skoda-auto.co.in/models/kylaq/kylaq
+kylaq-signature-at,kylaq,Signature,petrol,AT,999,115,178,19.05,,,45,1049000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kylaq/variants.htm,https://www.skoda-auto.co.in/models/kylaq/kylaq
+kylaq-signature-plus-mt,kylaq,Signature+,petrol,MT,999,115,178,19.68,,,45,1079000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kylaq/variants.htm,https://www.skoda-auto.co.in/models/kylaq/kylaq
+kylaq-signature-plus-at,kylaq,Signature+,petrol,AT,999,115,178,19.05,,,45,1179000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kylaq/variants.htm,https://www.skoda-auto.co.in/models/kylaq/kylaq
+kylaq-sportline-mt,kylaq,Sportline,petrol,MT,999,115,178,19.68,,,45,1135000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kylaq/variants.htm,https://www.skoda-auto.co.in/models/kylaq/kylaq
+kylaq-sportline-at,kylaq,Sportline,petrol,AT,999,115,178,19.05,,,45,1235000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kylaq/variants.htm,https://www.skoda-auto.co.in/models/kylaq/kylaq
+kylaq-prestige-mt,kylaq,Prestige,petrol,MT,999,115,178,19.68,,,45,1185000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kylaq/variants.htm,https://www.skoda-auto.co.in/models/kylaq/kylaq
+kylaq-prestige-at,kylaq,Prestige,petrol,AT,999,115,178,19.05,,,45,1285000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kylaq/variants.htm,https://www.skoda-auto.co.in/models/kylaq/kylaq
+kylaq-prestige-plus-mt,kylaq,Prestige+,petrol,MT,999,115,178,19.68,,,45,1209000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kylaq/variants.htm,https://www.skoda-auto.co.in/models/kylaq/kylaq
+kylaq-prestige-plus-at,kylaq,Prestige+,petrol,AT,999,115,178,19.05,,,45,1309000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kylaq/variants.htm,https://www.skoda-auto.co.in/models/kylaq/kylaq
+kushaq-classic-plus-mt,kushaq,Classic+,petrol,MT,999,115,178,19.66,,,50,1069000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kushaq/variants.htm,https://www.skoda-auto.co.in/models/kushaq/kushaq
+kushaq-classic-plus-at,kushaq,Classic+,petrol,AT,999,115,178,19.09,,,50,1304000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kushaq/variants.htm,https://www.skoda-auto.co.in/models/kushaq/kushaq
+kushaq-signature-mt,kushaq,Signature,petrol,MT,999,115,178,19.66,,,50,1469000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kushaq/variants.htm,https://www.skoda-auto.co.in/models/kushaq/kushaq
+kushaq-signature-at,kushaq,Signature,petrol,AT,999,115,178,19.09,,,50,1569000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kushaq/variants.htm,https://www.skoda-auto.co.in/models/kushaq/kushaq
+kushaq-sportline-mt,kushaq,Sportline,petrol,MT,999,115,178,19.76,,,50,1489000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kushaq/variants.htm,https://www.skoda-auto.co.in/models/kushaq/kushaq
+kushaq-sportline-at,kushaq,Sportline,petrol,AT,999,115,178,19.09,,,50,1589000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kushaq/variants.htm,https://www.skoda-auto.co.in/models/kushaq/kushaq
+kushaq-prestige-mt,kushaq,Prestige,petrol,MT,999,115,178,19.66,,,50,1694000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kushaq/variants.htm,https://www.skoda-auto.co.in/models/kushaq/kushaq
+kushaq-prestige-at,kushaq,Prestige,petrol,AT,999,115,178,19.09,,,50,1779000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kushaq/variants.htm,https://www.skoda-auto.co.in/models/kushaq/kushaq
+kushaq-monte-carlo-at,kushaq,Monte Carlo,petrol,AT,999,115,178,19.09,,,50,1809000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kushaq/variants.htm,https://www.skoda-auto.co.in/models/kushaq/kushaq
+kushaq-prestige-dsg,kushaq,Prestige,petrol,DSG,1498,150,250,18.72,,,50,1899000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kushaq/variants.htm,https://www.skoda-auto.co.in/models/kushaq/kushaq
+kushaq-monte-carlo-dsg,kushaq,Monte Carlo,petrol,DSG,1498,150,250,18.72,,,50,1919000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kushaq/variants.htm,https://www.skoda-auto.co.in/models/kushaq/kushaq
+slavia-classic-mt,slavia,Classic,petrol,MT,999,115,178,19.76,,,45,999900,Delhi,2026-10-17,https://www.skoda-auto.co.in/models/slavia/slavia,https://www.carwale.com/skoda-cars/slavia/
+slavia-classic-plus-mt,slavia,Classic+,petrol,MT,999,115,178,19.76,,,45,1099000,Delhi,2026-10-17,https://www.cardekho.com/skoda/slavia/variants.htm,https://www.carwale.com/skoda-cars/slavia/
+slavia-classic-plus-at,slavia,Classic+,petrol,AT,999,115,178,19.5,,,45,1249000,Delhi,2026-10-17,https://www.cardekho.com/skoda/slavia/variants.htm,https://www.carwale.com/skoda-cars/slavia/
+slavia-signature-mt,slavia,Signature,petrol,MT,999,115,178,19.76,,,45,1394000,Delhi,2026-10-17,https://www.cardekho.com/skoda/slavia/variants.htm,https://www.carwale.com/skoda-cars/slavia/
+slavia-signature-at,slavia,Signature,petrol,AT,999,115,178,19.5,,,45,1494000,Delhi,2026-10-17,https://www.cardekho.com/skoda/slavia/variants.htm,https://www.carwale.com/skoda-cars/slavia/
+slavia-sportline-mt,slavia,Sportline,petrol,MT,999,115,178,19.76,,,45,1434000,Delhi,2026-10-17,https://www.cardekho.com/skoda/slavia/variants.htm,https://www.carwale.com/skoda-cars/slavia/
+slavia-sportline-at,slavia,Sportline,petrol,AT,999,115,178,19.5,,,45,1534000,Delhi,2026-10-17,https://www.cardekho.com/skoda/slavia/variants.htm,https://www.carwale.com/skoda-cars/slavia/
+slavia-prestige-mt,slavia,Prestige,petrol,MT,999,115,178,19.76,,,45,1589000,Delhi,2026-10-17,https://www.cardekho.com/skoda/slavia/variants.htm,https://www.carwale.com/skoda-cars/slavia/
+slavia-prestige-at,slavia,Prestige,petrol,AT,999,115,178,19.5,,,45,1689000,Delhi,2026-10-17,https://www.cardekho.com/skoda/slavia/variants.htm,https://www.carwale.com/skoda-cars/slavia/
+slavia-monte-carlo-at,slavia,Monte Carlo,petrol,AT,999,115,178,19.5,,,45,1729000,Delhi,2026-10-17,https://www.cardekho.com/skoda/slavia/variants.htm,https://www.carwale.com/skoda-cars/slavia/
+slavia-prestige-dsg,slavia,Prestige,petrol,DSG,1498,150,250,18.79,,,45,1859000,Delhi,2026-10-17,https://www.cardekho.com/skoda/slavia/variants.htm,https://www.carwale.com/skoda-cars/slavia/
+slavia-monte-carlo-dsg,slavia,Monte Carlo,petrol,DSG,1498,150,250,18.79,,,45,1884000,Delhi,2026-10-17,https://www.cardekho.com/skoda/slavia/variants.htm,https://www.carwale.com/skoda-cars/slavia/
+kodiaq-lounge-dsg,kodiaq,Lounge,petrol,DSG,1984,204,320,14.86,,,,3699000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kodiaq/variants.htm,https://www.skoda-auto.co.in/models/kodiaq/kodiaq
+kodiaq-sportline-dsg,kodiaq,Sportline,petrol,DSG,1984,204,320,14.86,,,,4499000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kodiaq/variants.htm,https://www.skoda-auto.co.in/models/kodiaq/kodiaq
+kodiaq-selection-lk-dsg,kodiaq,Selection L&K,petrol,DSG,1984,204,320,14.86,,,,4699000,Delhi,2026-10-17,https://www.cardekho.com/skoda/kodiaq/variants.htm,https://www.skoda-auto.co.in/models/kodiaq/kodiaq
+octavia-rs-dsg,octavia-rs,RS,petrol,DSG,1984,265,370,,,,50,5669000,Delhi,2026-10-17,https://www.skoda-auto.co.in/models/octavia-rs/octavia-rs,https://www.skoda-auto.co.in/models/octavia-rs/octavia-rs
+enyaq-60-at,enyaq,60,electric,AT,,,,,63,500,,5000000,Delhi,2026-10-17,https://www.carwale.com/skoda-cars/enyaq/,https://www.carwale.com/skoda-cars/enyaq/

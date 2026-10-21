@@ -1,0 +1,26 @@
+# Secrets
+.env
+
+# Virtual environment
+.venv/
+
+# Local runtime data (customer conversations, leads, caches)
+data/conversations/*
+!data/conversations/.gitkeep
+data/leads.csv
+data/tickets.csv
+data/cache/*
+!data/cache/.gitkeep
+data/logs/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Eval run outputs (logs, results, test leads)
+evals/results/
+
+# LangGraph Studio (dev tool): its own venv and the dev server's local state
+.venv-studio/
+.langgraph_api/
