@@ -6,7 +6,7 @@ It uses no database: car data lives in CSV/JSON files, documents are searched wi
 
 > **Independent project**, not affiliated with or endorsed by Škoda Auto. Car data comes from public sources listed in [data/seed/README.md](data/seed/README.md); prices are estimates.
 >
-> **Status:** the agent works end to end in the terminal (CLI) and in LangGraph Studio. The API and customer UI (Phase 5) are not built yet. [ROADMAP.md](ROADMAP.md) is the source of truth for the design and every decision.
+> **Status:** the agent works end to end in the browser (chat page + API), the terminal (CLI) and LangGraph Studio. The API is a local demo: add login, rate limiting and HTTPS before putting it on the internet. [ROADMAP.md](ROADMAP.md) is the source of truth for the design and every decision.
 
 ---
 
@@ -86,6 +86,12 @@ Never commit `.env`. All settings are documented in [.env.example](.env.example)
 ---
 
 ## Running it
+
+**Chat in the browser** (API + chat page):
+```powershell
+.venv\Scripts\python.exe -m uvicorn app.api.main:app --port 8000
+```
+Then open **http://127.0.0.1:8000**. You get progress while it works ("Working out the price…"), formatted replies, Confirm/Cancel buttons for test drives, callbacks and tickets, **📍 Share location** for nearby showrooms, and the chat is kept across refreshes (**New chat** starts over). The API: `POST /api/chat` and `POST /api/resume` stream Server-Sent Events (`thread`, `status`, `reply` / `confirm` / `error`, `done`), `GET /api/threads/{id}` returns a conversation, `GET /api/health`.
 
 **Chat in the terminal:**
 ```powershell
@@ -167,4 +173,4 @@ docs/graph.md    diagram generated from the compiled graph (python -m app.graph.
 - Road tax is available for 4 states (Telangana, Karnataka, Maharashtra, Delhi) and dealers for 4 cities; ex-showroom prices are Delhi figures. Insurance % and the FASTag fee are assumptions (flagged in every quote).
 - The documents in `data/raw/` are samples written from public Škoda India information; replace them with real brochures and rebuild the index.
 - A Confirm/Cancel pause can't be resumed after the app restarts.
-- Not built yet: the API and customer UI (Phase 5).
+- The API is a local demo: no login, rate limiting or HTTPS yet (each message costs ~4–8 Gemini calls, so add a rate limit before any public use).

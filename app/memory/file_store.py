@@ -30,6 +30,11 @@ def _path(thread_id: str, base_dir: Path | None = None) -> Path:
     return (base_dir or get_settings().conversations_dir) / f"{thread_id}.json"
 
 
+def validate_thread_id(thread_id: str) -> None:
+    """Raise InvalidThreadId unless the id is 1-64 letters, digits, '-' or '_' (ids come from clients)."""
+    _path(thread_id)
+
+
 def serialize_state(values: dict) -> dict:
     out = {}
     for key, value in values.items():

@@ -18,20 +18,13 @@ import uuid
 from langchain_core.messages import HumanMessage
 from langgraph.types import Command
 
-from app.agents import CATALOG
 from app.config import get_settings
 from app.graph.build_graph import build_graph, recursion_limit
+from app.graph.progress import STATUS
 from app.graph.runner import run_turn
 from app.log import configure_logging, mask_phone
 from app.memory.file_store import restore_if_missing, save_state
 from app.observability import disable_auto_tracing, flush_tracing, tracing_callbacks
-
-STATUS = {
-    "supervisor": "Understanding your question...",
-    **{name: spec.status_text for name, spec in CATALOG.agents.items()},  # from each agent's own file
-    "tools": "Looking that up...", "composer": "Writing the reply...",
-}
-
 
 def show_status(node: str) -> None:
     if node in STATUS:

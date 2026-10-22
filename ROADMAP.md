@@ -1,6 +1,6 @@
 # Skoda India Customer Support Agent: Roadmap and Design
 
-Status: **Phases 1–4 complete (Phase 4 on 2026-10-19). Phase 5 (API + UI) not started; it waits for the user's go-ahead.**
+Status: **Phases 1–5 complete (Phase 5 as a local demo on 2026-10-22).** See section 1 for what each phase delivered and sections 7–13 for the changes since.
 
 This file is the source of truth for the build. The graph follows the user's flowchart
 (`Skoda-Agent-Flow.pdf`), node for node.
@@ -81,7 +81,13 @@ Original plan:
 
 **Check:** `pytest -q`, then the CLI chat against real Gemini.
 
-### Phase 5: API and UI
+### Phase 5: API and UI ✅ local demo built (2026-10-22)
+- **Decisions (user):** a **web page served by the API** instead of Streamlit (Windows Application Control blocks pyarrow, which Streamlit needs); **local demo first** (login, rate limiting, strict CORS and HTTPS before any internet deployment); **progress updates** over Server-Sent Events.
+- `app/api/main.py` (FastAPI, `create_app(graph=None)`): `POST /api/chat` `{thread_id?, message (≤2,000 chars), lat?, long? (India only)}` and `POST /api/resume` `{thread_id, approved, feedback?}` stream `thread` → `status`… → `reply` | `confirm` | `error` → `done`. Each turn runs through `run_turn` in a worker thread (one turn at a time per conversation), restores the thread from its JSON if needed, and saves the State at every turn end (design rules 2 and 3: only progress is streamed, the reply after the guardrail). A shared location becomes the `lat`/`long` slots. `GET /api/threads/{id}` (messages + any pending Confirm), `GET /api/health`, `/` serves the page. Thread ids validated; resume without a pause → 409; errors → the friendly message only. Logs: `data/logs/api.log`.
+- `ui/index.html`: chat bubbles, progress line, replies rendered from Markdown and sanitised (marked + DOMPurify), Confirm/Cancel card with an optional note, Share location, New chat, conversation restored after a refresh.
+- `app/graph/progress.py`: the progress texts, shared by the CLI and the API. `tests/test_api.py` (8 tests); 214 tests pass. Live check over HTTP: "Nearest Skoda showroom to Kukatpally" streamed status events then the reply.
+
+Original plan:
 1. FastAPI `POST /chat` (streams progress events; the reply is sent only after the guardrail) and `POST /resume`.
 2. State saved to `data/conversations/{thread_id}.json` at every turn end (see design rule 3).
 3. Streamlit chat: share my location, continue by thread_id, Confirm / Cancel when the graph pauses.
