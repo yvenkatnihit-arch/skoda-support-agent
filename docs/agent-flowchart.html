@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Flowchart</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+  /* Layout: a single column; each flowchart sits in its own scrolling frame. */
+  :root {
+    --bg: #f2f4f1; --panel: #ffffff; --fg: #17201b; --muted: #5a6760; --line: #cfd8d2; --accent: #1d6f55;
+    --display: "Archivo", "Segoe UI", system-ui, sans-serif;
+    --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg: #121815; --panel: #1b2420; --fg: #e4ebe7; --muted: #9aa9a1; --line: #33413a; --accent: #5cc49b; color-scheme: dark; }
+  }
+  :root[data-theme="dark"] { --bg: #121815; --panel: #1b2420; --fg: #e4ebe7; --muted: #9aa9a1; --line: #33413a; --accent: #5cc49b; color-scheme: dark; }
+  body { background: var(--bg); color: var(--fg); font: 16px/1.55 var(--body); }
+  main { max-width: 1100px; margin: 0 auto; padding-block: 32px 56px; display: grid; gap: 24px;
+         padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font: 600 12px var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  h1 { font: 800 clamp(26px, 5vw, 38px)/1.1 var(--display); margin: 4px 0 6px; text-wrap: balance; }
+  h2 { font: 700 20px/1.2 var(--display); margin: 0; }
+  p { margin: 0; max-width: 70ch; color: var(--muted); }
+  figure { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; min-width: 0; }
+  .frame { overflow-x: auto; padding: 16px; }
+  pre.mermaid { margin: 0; min-width: 720px; background: transparent; }
+  figcaption { padding: 10px 14px 14px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+  section { display: grid; gap: 10px; min-width: 0; }
+</style>
+
+<main>
+  <header>
+    <div class="eyebrow">Škoda support agent · LangGraph</div>
+    <h1>Agent flowchart</h1>
+    <p>The whole flow for one customer message, from START to END. Diamonds are decisions made in plain Python; dotted arrows loop back; numbered labels are the router's checks, in the order it makes them.</p>
+  </header>
+
+  <section>
+    <figure>
+      <div class="frame">
+<pre class="mermaid">
+flowchart TD
+  S(["START"]) -->|"customer message (HumanMessage)"| SUP["supervisor<br/>Gemini: intents + slots + escalation flag<br/>merge slots · reset per-turn fields"]
+  SUP --> R{"router"}
+
+  R -->|"1 · needs a person<br/>(flag, or strikes ≥ 2)"| ESC["escalate<br/>hand-off notes · no Gemini"]
+  R -->|"2 · required detail missing"| CL["clarify<br/>asks one question · strikes +1"]
+  CL --> E1(["END"])
+  R -->|"3 · parallel agents asked<br/>(Send to each)"| P
+  R -->|"4 · only action agents asked"| AG
+  R -->|"5 · no agents (small talk)"| CO
+
+  subgraph P ["Parallel agents · at the same time · own scratchpad each"]
+    direction LR
+    CI["car_info"]
+    QU["quotation"]
+    SE["service"]
+    LO["locator"]
+  end
+  P -->|"merge_outputs"| AA["after_agents<br/>join: waits for all"]
+  AA -->|"an action agent asked"| AG
+  AA -->|"no action agent"| CO
+
+  subgraph A ["Action agents · one at a time · lead, then support"]
+    AG["lead / support<br/>Gemini + own tools<br/>sees the other agents' results"] --> AR{"agent_router"}
+    AR -->|"tool calls"| AP{"approval<br/>own tool? pre-check ok?"}
+    AP -->|"read-only tool"| TO["tools<br/>Python runs the tool"]
+    AP -->|"action tool"| AU[/"ask_user ⏸<br/>Confirm or Cancel"/]
+    AU -->|"Confirm"| TO
+    AU -.->|"Cancel → NOT DONE"| AG
+    AP -.->|"not its tool / details missing → NOT DONE"| AG
+    TO -.->|"tool result (route_back)"| AG
+    AR -->|"final answer / limit"| SO["save_output<br/>store result · clear scratchpad"]
+    SO -.->|"next asked action agent"| AG
+  end
+  SO -->|"none left"| CO
+
+  ESC --> CO["composer<br/>Gemini: one reply, fixed order"]
+  CO --> GR{"guardrail<br/>every ₹ / km from a tool?"}
+  GR -.->|"wrong figure: fix once"| CO
+  GR -->|"more than 20 messages"| SU["summarize<br/>older messages → summary"]
+  GR -->|"otherwise"| E2(["END"])
+  SU --> E2
+  E2 -.-> SAVE[("State saved to<br/>data/conversations/thread_id.json")]
+</pre>
+      </div>
+      <figcaption>After a good reply the strike count goes back to 0; a safe reply, a repeated clarify question or a failed turn adds 1, and two in a row hand the next turn to a person.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Inside each parallel worker</h2>
+    <p>car_info, quotation, service and locator each run this loop in their own subgraph; only the result returns to the main flow.</p>
+    <figure>
+      <div class="frame">
+<pre class="mermaid">
+flowchart LR
+  IN(["Send from the router"]) --> WA["agent<br/>Gemini + own tools"]
+  WA --> WR{"worker_router"}
+  WR -->|"tool calls"| WP{"approval<br/>own read-only tools only"}
+  WP -->|"allowed"| WT["tools<br/>Python"]
+  WT -.->|"result (max 5 rounds)"| WA
+  WP -.->|"not its tool → NOT DONE"| WA
+  WR -->|"final answer · limit · Gemini failed"| WF["finish<br/>answer · tool results · status · seconds"]
+  WF --> OUT(["agent_outputs[name]<br/>via merge_outputs"])
+</pre>
+      </div>
+      <figcaption>Workers never pause for the customer. If Gemini stays unavailable for one worker it returns status "failed", and the others carry on.</figcaption>
+    </figure>
+  </section>
+</main>
+
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.esm.min.mjs";
+  const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  mermaid.initialize({ startOnLoad: true, theme: dark ? "dark" : "default", flowchart: { htmlLabels: true } });
+</script>
+</html>

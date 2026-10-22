@@ -8,7 +8,7 @@ This file is the source of truth for the build. The graph follows the user's flo
 ### Decisions
 - Project root: this folder (same layout as `skoda-agent/`).
 - Work one phase at a time, and **never start a phase or new work without the user's explicit go-ahead**.
-- `REQUIRED_SLOTS` stays as specified. "Kylaq price in Hyderabad and nearest showroom to Madhapur" first gets a clarify for the variant; then quotation and locator both run.
+- Required details per agent live in each agent file (section 8). Since 2026-10-22 a price needs only the model: without a variant or city the bot shows the price list instead of asking (section 14).
 - `data/raw/` starts with sample docs marked SAMPLE. Real brochures are added later and the index is rebuilt.
 - Seed data is real public data, with a source on every row (see `data/seed/README.md`).
 - Python 3.14 venv. `langchain-community` is not used (it is being sunset); FAISS is used directly.
@@ -545,3 +545,15 @@ When the bot can't or shouldn't keep going alone, a new conditional route hands 
 - Checks: `evals/routing_cases.jsonl` e-01…e-05 (frustration, safety, dispute, normal complaint → no hand-off, "talk to a person" → callback) pass live; `tests/test_escalation.py` (9 tests); 206 tests pass. Live CLI check of the safety case: supervisor → escalate → composer → guardrail, 2 Gemini calls, ~5 s.
 
 **Environment note (2026-10-22):** Windows Application Control on this machine started blocking `pyarrow`'s compiled `_compute` module, which made `import pandas` fail. pyarrow was installed only because Streamlit needs it; it was uninstalled from `.venv` (pandas and the agent work without it). Streamlit (Phase 5 UI) needs pyarrow again, so the policy must allow it before the UI is built.
+
+---
+
+## 14. Price questions never dead-end (built 2026-10-22, from a live chat)
+
+Seen in a live chat: after "tell me about the Slavia", "what is the price" → "Which variant, and which city?", then "the latest model", "in Hyderabad", "latest model of Slavia" each got the same question again. Clarify only asked; it never showed the choices, and everyday words weren't understood. The workflow (nodes and edges) is unchanged; three steps behave differently:
+
+- **A price needs only the model** (`quotation`: `required_car_slots=("model",)`, no required city). Without a variant or city the quotation agent shows the **starting ex-showroom price and every variant with its gearbox and price** (`get_variant_details`, figures checked by the guardrail), says they're the current lineup, and asks which variant and city for the exact on-road quote. Variant but no city → that variant's ex-showroom price, then asks the city. Clarify for prices now only happens when even the model is missing.
+- **Everyday words become real trims** (`app/graph/car_slots.py`, after the official-name match): "base / cheapest / entry" → the model's cheapest trim, "top / top-end / fully loaded / most expensive" → the most expensive (within the gearbox or fuel if given; the gearbox is set too), "latest / new / 2026" → no single variant (the whole lineup). The supervisor passes these words through as the variant.
+- **Clarify shows the choices**, computed in Python (`app/graph/nodes/clarify.py`): the models on sale and coming soon, the cities with on-road price data, a model's variants (with "base" / "top" as easy picks), or how to give a location; and explains a term like "variant" if the customer seems unsure.
+- **"What variants are there?" / "what is a variant?"** → car_info, which now also has `get_variant_details`: a one-line explanation plus the model's real variants.
+- Checks: `tests/test_price_help.py` (the screenshot conversation, word mapping, choices) and updated tests; routing cases p-01…p-04 pass live; eval q-05 ("Price of Slavia") now expects the price list instead of a clarify. 218 tests pass. Live CLI replay of the screenshot conversation: price list on the first ask, then the variant explanation.

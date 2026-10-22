@@ -13,7 +13,8 @@ AGENT = AgentSpec(
     prompt=QUOTATION_PROMPT,
     reply_order=20,
     status_text="Working out the price...",
-    required_slots=("city",),
-    required_car_slots=("model", "variant"),
+    # Only the model is needed: without a variant or city the agent shows the starting price and every variant's
+    # ex-showroom price, and asks which one (and where) for the exact on-road quote. Never a dead-end question.
+    required_car_slots=("model",),
     comparison_relaxes=True,  # "Is the Kylaq cheaper than the Kushaq?" -> compare starting prices, no clarify
 )

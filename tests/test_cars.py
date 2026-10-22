@@ -84,13 +84,14 @@ def test_each_agent_sees_only_its_cars():
 
 def test_clarify_is_per_car_and_comparisons_need_no_trim():
     one = merge_slots({}, Slots(cars=[CarMention(model="Kylaq")]), "Kylaq price")
-    assert missing_slots(["quotation"], one) == {"quotation": ["city", "variant"]}
+    assert missing_slots(["quotation"], one) == {}  # no trim or city: the agent shows the price list instead
+    assert missing_slots(["quotation"], merge_slots({}, Slots(city="Pune"), "price?")) == {"quotation": ["model"]}
     assert missing_slots(["quotation"], comparison()) == {}  # starting prices, no clarify
     a = two_questions()
     assert missing_slots(["quotation", "car_info"], a) == {}  # the Kushaq has its trim and city
     no_trim = merge_slots({}, Slots(city="Pune", cars=[CarMention(model="Kushaq", intents=["quotation"]),
                                                        CarMention(model="Slavia", intents=["car_info"])]), "x")
-    assert missing_slots(["quotation", "car_info"], no_trim) == {"quotation": ["variant"]}
+    assert missing_slots(["quotation", "car_info"], no_trim) == {}
 
 
 def test_price_list_gives_the_starting_price():

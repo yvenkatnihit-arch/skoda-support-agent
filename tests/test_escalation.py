@@ -46,7 +46,7 @@ def test_frustration_hands_off_instead_of_answering():
 
 
 def test_two_stuck_turns_in_a_row_hand_off_on_the_third():
-    stuck = route(["quotation"], model="Slavia")  # no variant, no city: clarify each time
+    stuck = route(["quotation"])  # no model: clarify each time
     graph, llms = make(supervisor=[stuck, stuck, stuck],
                        clarify=[AIMessage(content="Which variant and city?"), AIMessage(content="Which variant?")],
                        composer=[AIMessage(content="Sorry I'm not getting this right. Call 1800 2700 260.")])
@@ -58,7 +58,7 @@ def test_two_stuck_turns_in_a_row_hand_off_on_the_third():
 
 
 def test_a_good_reply_resets_the_counter_and_a_safe_reply_counts():
-    graph, _ = make(supervisor=[route(["quotation"], model="Slavia"), route(["small_talk"]), route(["small_talk"])],
+    graph, _ = make(supervisor=[route(["quotation"]), route(["small_talk"]), route(["small_talk"])],
                     clarify=[AIMessage(content="Which variant and city?")],
                     composer=[AIMessage(content="Hello!"),
                               AIMessage(content="From ₹9 lakh"), AIMessage(content="From ₹9 lakh")])

@@ -73,7 +73,7 @@ def tools_for(agent: str) -> list[BaseTool]:
 
 # ---- the tools ---------------------------------------------------------------------
 register(search_brochures, agents=["car_info"])
-register(get_variant_details, agents=["quotation"])
+register(get_variant_details, agents=["quotation", "car_info"])  # car_info: "what variants are there?"
 register(calculate_on_road_price, agents=["quotation"])
 register(calculate_range, agents=["quotation"])
 register(get_service_cost, agents=["quotation"])

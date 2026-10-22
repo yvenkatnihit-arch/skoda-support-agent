@@ -54,7 +54,7 @@ def test_action_agents_run_in_reply_order_one_after_another():
 
 
 def test_tools_come_from_the_registry_unchanged():
-    assert CATALOG.agents["car_info"].tool_names == {"search_brochures"}
+    assert CATALOG.agents["car_info"].tool_names == {"search_brochures", "get_variant_details"}
     assert CATALOG.agents["locator"].tool_names == {"geocode_location", "find_nearest_dealers"}
     assert CATALOG.agents["lead"].tool_names == {"save_lead", "book_test_drive"}
     assert CATALOG.agents["support"].tool_names == {"create_ticket", "get_ticket_status", "search_service_docs",

@@ -79,7 +79,7 @@ def test_turn_summary_for_a_price_question_has_names_and_times_but_no_text():
 
 
 def test_turn_summary_for_clarify_and_for_a_pause(leads_file):  # noqa: F811
-    graph, _ = make(supervisor=[route(["quotation"], model="Slavia")], clarify=[AIMessage(content="Which city?")])
+    graph, _ = make(supervisor=[route(["quotation"])], clarify=[AIMessage(content="Which model?")])
     with capture_logs(MERGE) as logs:
         run_turn(graph, CONFIG, {"messages": [HumanMessage("Price of Slavia")]})
     line = _turn_line(logs)

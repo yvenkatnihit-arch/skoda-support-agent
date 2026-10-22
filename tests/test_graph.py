@@ -121,7 +121,10 @@ def _targets(route):
 
 
 def test_router_sends_to_all_parallel_agents_or_clarify_lead_composer():
-    assert route_after_supervisor({"intents": ["quotation"], "slots": {"model": "Slavia"}}) == "clarify"
+    assert route_after_supervisor({"intents": ["quotation"], "slots": {"city": "Pune"}}) == "clarify"  # no model
+    # a model is enough: no trim or city -> the price agent shows the variants and starting price
+    assert _targets(route_after_supervisor({"intents": ["quotation"], "slots": {"model": "Slavia"},
+                                            "messages": [], "summary": ""})) == ["quotation"]
     assert _targets(route_after_supervisor({"intents": ["quotation"], "slots": KYLAQ_AT_HYD})) == ["quotation"]
     loc = {"intents": ["locator"]}
     assert route_after_supervisor({**loc, "slots": {}}) == "clarify"
@@ -137,9 +140,8 @@ def test_router_sends_to_all_parallel_agents_or_clarify_lead_composer():
     assert _targets(sends) == ["locator", "car_info"]
     assert sends[0].arg["agent"] == "locator" and sends[0].arg["known_slots"] == {"city": "Pune"}
     assert after_agents(both) == "lead" and after_agents({"intents": ["locator"]}) == "composer"
-    # any missing slot -> clarify first and no agent runs (locator is fine, quotation lacks the variant)
-    assert route_after_supervisor({"intents": ["quotation", "locator"],
-                                   "slots": {"model": "Kylaq", "city": "Pune"}}) == "clarify"
+    # any missing slot -> clarify first and no agent runs (locator is fine, quotation lacks the model)
+    assert route_after_supervisor({"intents": ["quotation", "locator"], "slots": {"city": "Pune"}}) == "clarify"
 
 
 def test_agent_router_and_tool_round_cap():
@@ -268,10 +270,12 @@ def test_quotation_flow_end_to_end():
 
 
 def test_missing_slot_goes_to_clarify_and_ends_the_turn():
-    graph, llms = make(supervisor=[route(["quotation"], model="Slavia")],
-                       clarify=[AIMessage(content="Which variant, and which city?")])
-    state = ask(graph, "Price of Slavia")
-    assert ai_texts(state) == ["Which variant, and which city?"]
+    graph, llms = make(supervisor=[route(["quotation"])],
+                       clarify=[AIMessage(content="Which model would you like the price for?")])
+    state = ask(graph, "What is the price?")
+    assert ai_texts(state) == ["Which model would you like the price for?"]
+    choices = llms.clarify.calls[0][0].content
+    assert "Models on sale:" in choices and "Slavia" in choices  # the customer sees what to pick from
     assert llms.composer.calls == [] and llms.agents["quotation"].calls == []
 
 

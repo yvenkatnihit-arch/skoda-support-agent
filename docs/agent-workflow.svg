@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="flow" viewBox="0 0 1180 1290" role="img" aria-label="Full workflow: supervisor, router with five branches (escalate, clarify, parallel agents, action agents, composer), the action loop with approval, ask_user, tools and save_output, then composer, guardrail, summarize and END.">
+          <style>
+  svg { background: #f2f4f1; color: #46534c; }
+  .box { fill: #ffffff; stroke: #46534c; stroke-width: 1.3; }
+  .decision { fill: #dcefe6; stroke: #1d6f55; stroke-width: 1.5; }
+  .pause { fill: #fbedd4; stroke: #9a5b00; stroke-width: 1.5; }
+  .group { fill: #e8eee9; stroke: #cfd8d2; stroke-width: 1.2; stroke-dasharray: 5 4; }
+  .term { fill: #17201b; }
+  .edge { fill: none; stroke: #46534c; stroke-width: 1.5; }
+  .edge.loop { stroke-dasharray: 4 3; }
+  .t { fill: #17201b; font: 600 13px Consolas, "Cascadia Mono", monospace; }
+  .tw { fill: #f2f4f1; font: 600 12px Consolas, "Cascadia Mono", monospace; }
+  .s { fill: #5a6760; font: 400 11px "Segoe UI", sans-serif; }
+  .l { fill: #17201b; font: 600 11px "Segoe UI", sans-serif; }
+  .g { fill: #5a6760; font: 600 11px Consolas, monospace; letter-spacing: .04em; }
+  .arrowhead { fill: #46534c; }
+</style>
+<defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path class="arrowhead" d="M0,0 L10,5 L0,10 z"/>
+            </marker>
+          </defs>
+
+          <!-- START -->
+          <rect class="term" x="555" y="12" width="90" height="30" rx="15"/>
+          <text class="tw" x="600" y="32" text-anchor="middle">START</text>
+          <line class="edge" x1="600" y1="42" x2="600" y2="73" marker-end="url(#ah)"/>
+          <text class="s" x="610" y="62">HumanMessage added to State</text>
+
+          <!-- supervisor -->
+          <rect class="box" x="450" y="75" width="300" height="58" rx="8"/>
+          <text class="t" x="600" y="98" text-anchor="middle">supervisor</text>
+          <text class="s" x="600" y="118" text-anchor="middle">Gemini → intents + slots (cars) + escalation</text>
+          <line class="edge" x1="600" y1="133" x2="600" y2="155" marker-end="url(#ah)"/>
+          <text class="s" x="610" y="149">merge slots · reset per-turn fields</text>
+
+          <!-- router -->
+          <polygon class="decision" points="490,195 600,157 710,195 600,233"/>
+          <text class="t" x="600" y="192" text-anchor="middle">router</text>
+          <text class="s" x="600" y="208" text-anchor="middle">route_after_supervisor</text>
+
+          <!-- 1 escalate -->
+          <polyline class="edge" points="490,195 120,195 120,298" marker-end="url(#ah)"/>
+          <text class="l" x="305" y="186" text-anchor="middle">① needs a person (flag or strikes ≥ 2)</text>
+          <rect class="box" x="40" y="300" width="160" height="56" rx="8"/>
+          <text class="t" x="120" y="323" text-anchor="middle">escalate</text>
+          <text class="s" x="120" y="342" text-anchor="middle">hand-off notes · no Gemini</text>
+          <polyline class="edge" points="120,356 120,1040 498,1040" marker-end="url(#ah)"/>
+          <text class="s" x="128" y="700">hand-off notes</text>
+
+          <!-- 2 clarify -->
+          <polyline class="edge" points="545,214 545,250 300,250 300,298" marker-end="url(#ah)"/>
+          <text class="l" x="422" y="244" text-anchor="middle">② required detail missing</text>
+          <rect class="box" x="220" y="300" width="160" height="56" rx="8"/>
+          <text class="t" x="300" y="323" text-anchor="middle">clarify</text>
+          <text class="s" x="300" y="342" text-anchor="middle">asks one question</text>
+          <line class="edge" x1="300" y1="356" x2="300" y2="398" marker-end="url(#ah)"/>
+          <text class="s" x="308" y="382">strikes +1</text>
+          <rect class="term" x="255" y="400" width="90" height="30" rx="15"/>
+          <text class="tw" x="300" y="420" text-anchor="middle">END</text>
+
+          <!-- 3 parallel group -->
+          <line class="edge" x1="600" y1="233" x2="600" y2="278" marker-end="url(#ah)"/>
+          <text class="l" x="610" y="262">③ parallel agents asked · Send to each</text>
+          <rect class="group" x="420" y="280" width="520" height="110" rx="12"/>
+          <text class="g" x="434" y="298">PARALLEL · AT THE SAME TIME · OWN SCRATCHPAD EACH</text>
+          <rect class="box" x="439" y="310" width="110" height="50" rx="7"/>
+          <text class="t" x="494" y="332" text-anchor="middle">car_info</text>
+          <text class="s" x="494" y="349" text-anchor="middle">worker</text>
+          <rect class="box" x="563" y="310" width="110" height="50" rx="7"/>
+          <text class="t" x="618" y="332" text-anchor="middle">quotation</text>
+          <text class="s" x="618" y="349" text-anchor="middle">worker</text>
+          <rect class="box" x="687" y="310" width="110" height="50" rx="7"/>
+          <text class="t" x="742" y="332" text-anchor="middle">service</text>
+          <text class="s" x="742" y="349" text-anchor="middle">worker</text>
+          <rect class="box" x="811" y="310" width="110" height="50" rx="7"/>
+          <text class="t" x="866" y="332" text-anchor="middle">locator</text>
+          <text class="s" x="866" y="349" text-anchor="middle">worker</text>
+          <line class="edge" x1="680" y1="390" x2="680" y2="418" marker-end="url(#ah)"/>
+          <text class="s" x="690" y="408">each adds its entry: merge_outputs</text>
+          <rect class="box" x="580" y="420" width="200" height="44" rx="8"/>
+          <text class="t" x="680" y="439" text-anchor="middle">after_agents</text>
+          <text class="s" x="680" y="455" text-anchor="middle">join: waits for all</text>
+          <polyline class="edge" points="580,442 230,442 230,1018 498,1018" marker-end="url(#ah)"/>
+          <text class="l" x="405" y="436" text-anchor="middle">no action agent asked</text>
+
+          <!-- 4 only action agents / 5 none -->
+          <polyline class="edge" points="710,195 1140,195 1140,1030 702,1030" marker-end="url(#ah)"/>
+          <text class="l" x="1132" y="930" text-anchor="end">⑤ no agents (small talk, out of scope)</text>
+          <polyline class="edge" points="1010,195 1010,505 760,505 760,523" marker-end="url(#ah)"/>
+          <text class="l" x="1002" y="430" text-anchor="end">④ only action agents asked</text>
+
+          <!-- action group -->
+          <rect class="group" x="300" y="490" width="680" height="425" rx="12"/>
+          <text class="g" x="320" y="908">ACTION AGENTS · ONE AT A TIME · REPLY ORDER: LEAD (50) → SUPPORT (60)</text>
+          <line class="edge" x1="680" y1="464" x2="680" y2="523" marker-end="url(#ah)"/>
+          <text class="l" x="690" y="500">first asked action agent</text>
+
+          <rect class="box" x="560" y="525" width="240" height="56" rx="8"/>
+          <text class="t" x="680" y="547" text-anchor="middle">lead / support</text>
+          <text class="s" x="680" y="566" text-anchor="middle">Gemini · own tools · sees others' results</text>
+          <line class="edge" x1="680" y1="581" x2="680" y2="608" marker-end="url(#ah)"/>
+
+          <polygon class="decision" points="590,640 680,610 770,640 680,670"/>
+          <text class="t" x="680" y="644" text-anchor="middle">agent_router</text>
+
+          <polyline class="edge" points="590,640 540,640 540,713" marker-end="url(#ah)"/>
+          <text class="l" x="560" y="631" text-anchor="middle">tool calls</text>
+          <polyline class="edge" points="770,640 880,640 880,713" marker-end="url(#ah)"/>
+          <text class="l" x="826" y="631" text-anchor="middle">final answer / limit</text>
+
+          <rect class="box" x="450" y="715" width="180" height="52" rx="8"/>
+          <text class="t" x="540" y="737" text-anchor="middle">approval</text>
+          <text class="s" x="540" y="755" text-anchor="middle">own tool? pre-check ok?</text>
+
+          <rect class="box" x="800" y="715" width="160" height="52" rx="8"/>
+          <text class="t" x="880" y="737" text-anchor="middle">save_output</text>
+          <text class="s" x="880" y="755" text-anchor="middle">agent_outputs · clear scratch</text>
+
+          <line class="edge" x1="540" y1="767" x2="540" y2="798" marker-end="url(#ah)"/>
+          <text class="l" x="548" y="788">read-only tool</text>
+          <polyline class="edge" points="630,741 750,741 750,798" marker-end="url(#ah)"/>
+          <text class="l" x="690" y="733" text-anchor="middle">action tool</text>
+
+          <rect class="box" x="450" y="800" width="180" height="52" rx="8"/>
+          <text class="t" x="540" y="822" text-anchor="middle">tools</text>
+          <text class="s" x="540" y="840" text-anchor="middle">Python runs the tool</text>
+
+          <rect class="pause" x="660" y="800" width="180" height="52" rx="8"/>
+          <text class="t" x="750" y="822" text-anchor="middle">ask_user ⏸</text>
+          <text class="s" x="750" y="840" text-anchor="middle">Confirm / Cancel</text>
+          <line class="edge" x1="660" y1="826" x2="632" y2="826" marker-end="url(#ah)"/>
+          <text class="l" x="646" y="816" text-anchor="middle">Confirm</text>
+
+          <!-- back-to-agent lane -->
+          <polyline class="edge loop" points="450,826 330,826"/>
+          <polyline class="edge loop" points="450,741 330,741"/>
+          <polyline class="edge loop" points="750,852 750,885 330,885"/>
+          <polyline class="edge loop" points="330,885 330,553 558,553" marker-end="url(#ah)"/>
+          <text class="s" x="338" y="820">tool result</text>
+          <text class="s" x="338" y="735">NOT DONE</text>
+          <text class="s" x="560" y="879" text-anchor="middle">Cancel → NOT DONE</text>
+          <text class="l" x="338" y="600">back to the same agent</text>
+          <text class="s" x="338" y="615">(route_back / Command)</text>
+
+          <!-- next action agent / composer -->
+          <polyline class="edge loop" points="960,741 995,741 995,567 802,567" marker-end="url(#ah)"/>
+          <text class="l" x="988" y="600" text-anchor="end">next asked action agent</text>
+          <polyline class="edge" points="880,767 880,1010 702,1010" marker-end="url(#ah)"/>
+          <text class="l" x="888" y="955">after_action: none left</text>
+
+          <!-- composer / guardrail / summarize / END -->
+          <rect class="box" x="500" y="990" width="200" height="56" rx="8"/>
+          <text class="t" x="600" y="1012" text-anchor="middle">composer</text>
+          <text class="s" x="600" y="1031" text-anchor="middle">Gemini → one reply, fixed order</text>
+          <line class="edge" x1="660" y1="1046" x2="660" y2="1088" marker-end="url(#ah)"/>
+          <text class="s" x="668" y="1072">reply</text>
+          <rect class="box" x="500" y="1090" width="200" height="52" rx="8"/>
+          <text class="t" x="600" y="1112" text-anchor="middle">guardrail</text>
+          <text class="s" x="600" y="1130" text-anchor="middle">every ₹ / km from a tool?</text>
+          <line class="edge loop" x1="540" y1="1090" x2="540" y2="1048" marker-end="url(#ah)"/>
+          <text class="l" x="532" y="1072" text-anchor="end">wrong figure: fix once</text>
+          <polyline class="edge" points="700,1116 850,1116 850,1178" marker-end="url(#ah)"/>
+          <text class="l" x="775" y="1108" text-anchor="middle">&gt; 20 messages</text>
+          <rect class="box" x="760" y="1180" width="180" height="48" rx="8"/>
+          <text class="t" x="850" y="1200" text-anchor="middle">summarize</text>
+          <text class="s" x="850" y="1217" text-anchor="middle">older messages → summary</text>
+          <line class="edge" x1="600" y1="1142" x2="600" y2="1188" marker-end="url(#ah)"/>
+          <text class="l" x="590" y="1170" text-anchor="end">otherwise</text>
+          <line class="edge" x1="760" y1="1204" x2="647" y2="1204" marker-end="url(#ah)"/>
+          <rect class="term" x="555" y="1190" width="90" height="30" rx="15"/>
+          <text class="tw" x="600" y="1210" text-anchor="middle">END</text>
+          <text class="s" x="600" y="1252" text-anchor="middle">After END the app saves the State to data/conversations/&lt;thread_id&gt;.json · good reply → strikes 0 · safe reply → strikes +1</text>
+        </svg>

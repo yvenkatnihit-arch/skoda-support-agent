@@ -8,7 +8,8 @@ the intents and slots for the customer's LATEST message.
 ## Slots
 Fill a slot only with a value the customer actually gave; otherwise leave it null. Never guess.
 - model: one of {models}.
-- variant: the trim name only, without the gearbox (e.g. "Signature+", "Prestige", "Monte Carlo", "Lounge").
+- variant: the trim name only, without the gearbox (e.g. "Signature+", "Prestige", "Monte Carlo", "Lounge"). If the
+  customer uses a word instead ("base", "cheapest", "top", "top-end", "fully loaded", "latest"), put that word.
 - transmission: MT for manual, AT for automatic / torque converter, DSG for DSG or dual-clutch.
 - fuel: petrol, diesel or electric, only if the customer said it.
 - city, state: where the customer is or wants the price for.

@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Workflow Map</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  /* Layout: one reading column of notes; wide diagrams scroll inside their own frame. */
+  :root {
+    --bg: #f2f4f1; --panel: #ffffff; --fg: #17201b; --muted: #5a6760; --line: #cfd8d2; --edge: #46534c;
+    --accent: #1d6f55; --accent-soft: #dcefe6; --pause: #9a5b00; --pause-soft: #fbedd4; --group: #e8eee9;
+    --display: "Archivo", "Segoe UI", system-ui, sans-serif;
+    --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121815; --panel: #1b2420; --fg: #e4ebe7; --muted: #9aa9a1; --line: #33413a; --edge: #a9b8b0;
+      --accent: #5cc49b; --accent-soft: #1d3a2f; --pause: #f0b450; --pause-soft: #3b2c12; --group: #18211d;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #121815; --panel: #1b2420; --fg: #e4ebe7; --muted: #9aa9a1; --line: #33413a; --edge: #a9b8b0;
+    --accent: #5cc49b; --accent-soft: #1d3a2f; --pause: #f0b450; --pause-soft: #3b2c12; --group: #18211d;
+    color-scheme: dark;
+  }
+  body { background: var(--bg); color: var(--fg); font: 16px/1.55 var(--body); }
+  main { max-width: 1080px; margin: 0 auto; padding-block: 32px 64px;
+         padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+         display: grid; gap: 28px; }
+  header { display: grid; gap: 6px; }
+  .eyebrow { font: 600 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  h1 { font: 800 clamp(28px, 5vw, 40px)/1.1 var(--display); margin: 0; text-wrap: balance; }
+  h2 { font: 700 22px/1.2 var(--display); margin: 0 0 10px; text-wrap: balance; }
+  p { margin: 0; max-width: 68ch; }
+  .lede { color: var(--muted); }
+  code, .mono { font-family: var(--mono); font-size: .88em; }
+  section { display: grid; gap: 12px; min-width: 0; }
+  figure { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; min-width: 0; }
+  .frame { overflow-x: auto; padding: 12px; }
+  figcaption { padding: 10px 14px 14px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+  svg { display: block; width: 100%; height: auto; color: var(--edge); }
+  #flow { min-width: 900px; } #worker { min-width: 760px; }
+  /* diagram styling (page CSS, no styles inside the SVG) */
+  .box { fill: var(--panel); stroke: var(--edge); stroke-width: 1.3; }
+  .decision { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }
+  .pause { fill: var(--pause-soft); stroke: var(--pause); stroke-width: 1.5; }
+  .group { fill: var(--group); stroke: var(--line); stroke-width: 1.2; stroke-dasharray: 5 4; }
+  .term { fill: var(--fg); }
+  .edge { fill: none; stroke: var(--edge); stroke-width: 1.5; }
+  .edge.loop { stroke-dasharray: 4 3; }
+  .t { fill: var(--fg); font: 600 13px var(--mono); }
+  .tw { fill: var(--bg); font: 600 12px var(--mono); }
+  .s { fill: var(--muted); font: 400 11px var(--body); }
+  .l { fill: var(--fg); font: 600 11px var(--body); }
+  .g { fill: var(--muted); font: 600 11px var(--mono); letter-spacing: .04em; }
+  .arrowhead { fill: var(--edge); }
+  .legend { display: flex; flex-wrap: wrap; gap: 14px 22px; font-size: 14px; color: var(--muted); }
+  .legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .sw { width: 22px; height: 14px; border-radius: 3px; border: 1.5px solid var(--edge); background: var(--panel); }
+  .sw.d { background: var(--accent-soft); border-color: var(--accent); transform: rotate(45deg) scale(.7); }
+  .sw.p { background: var(--pause-soft); border-color: var(--pause); }
+  .sw.g { background: var(--group); border: 1.5px dashed var(--line); }
+  .tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); }
+  table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+  th, td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+  th { font: 600 12px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); background: var(--group); }
+  tr:last-child td { border-bottom: 0; }
+  td:first-child { white-space: nowrap; font-family: var(--mono); font-size: 13px; font-weight: 600; }
+  .pill { display: inline-block; font: 600 11px var(--mono); padding: 1px 7px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  .pill.y { color: var(--accent); border-color: var(--accent); }
+  .steps { display: grid; gap: 10px; counter-reset: s; padding: 0; margin: 0; list-style: none; }
+  .steps li { counter-increment: s; display: grid; grid-template-columns: 30px 1fr; gap: 10px; max-width: 80ch; }
+  .steps li::before { content: counter(s); font: 700 13px var(--mono); color: var(--accent); background: var(--accent-soft);
+                      border-radius: 6px; height: 24px; display: grid; place-items: center; }
+  .steps li > div { min-width: 0; }
+</style>
+
+<main>
+  <header>
+    <div class="eyebrow">Škoda support agent · LangGraph</div>
+    <h1>Agent workflow map</h1>
+    <p class="lede">How one customer message moves through the graph, from the HumanMessage to END: every node, every edge and the condition on each conditional edge. As built on 22 October 2026 (parallel agents, action agents, list of cars, hand-off to a person).</p>
+  </header>
+
+  <section>
+    <div class="legend" aria-label="Legend">
+      <span><i class="sw"></i>node</span>
+      <span><i class="sw d"></i>routing decision (plain Python)</span>
+      <span><i class="sw p"></i>pause for the customer</span>
+      <span><i class="sw g"></i>group</span>
+      <span>solid arrow: always taken · labelled arrow: taken when its condition holds · dashed: loops back</span>
+    </div>
+    <figure>
+      <div class="frame">
+        <svg id="flow" viewBox="0 0 1180 1290" role="img" aria-label="Full workflow: supervisor, router with five branches (escalate, clarify, parallel agents, action agents, composer), the action loop with approval, ask_user, tools and save_output, then composer, guardrail, summarize and END.">
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path class="arrowhead" d="M0,0 L10,5 L0,10 z"/>
+            </marker>
+          </defs>
+
+          <!-- START -->
+          <rect class="term" x="555" y="12" width="90" height="30" rx="15"/>
+          <text class="tw" x="600" y="32" text-anchor="middle">START</text>
+          <line class="edge" x1="600" y1="42" x2="600" y2="73" marker-end="url(#ah)"/>
+          <text class="s" x="610" y="62">HumanMessage added to State</text>
+
+          <!-- supervisor -->
+          <rect class="box" x="450" y="75" width="300" height="58" rx="8"/>
+          <text class="t" x="600" y="98" text-anchor="middle">supervisor</text>
+          <text class="s" x="600" y="118" text-anchor="middle">Gemini → intents + slots (cars) + escalation</text>
+          <line class="edge" x1="600" y1="133" x2="600" y2="155" marker-end="url(#ah)"/>
+          <text class="s" x="610" y="149">merge slots · reset per-turn fields</text>
+
+          <!-- router -->
+          <polygon class="decision" points="490,195 600,157 710,195 600,233"/>
+          <text class="t" x="600" y="192" text-anchor="middle">router</text>
+          <text class="s" x="600" y="208" text-anchor="middle">route_after_supervisor</text>
+
+          <!-- 1 escalate -->
+          <polyline class="edge" points="490,195 120,195 120,298" marker-end="url(#ah)"/>
+          <text class="l" x="305" y="186" text-anchor="middle">① needs a person (flag or strikes ≥ 2)</text>
+          <rect class="box" x="40" y="300" width="160" height="56" rx="8"/>
+          <text class="t" x="120" y="323" text-anchor="middle">escalate</text>
+          <text class="s" x="120" y="342" text-anchor="middle">hand-off notes · no Gemini</text>
+          <polyline class="edge" points="120,356 120,1040 498,1040" marker-end="url(#ah)"/>
+          <text class="s" x="128" y="700">hand-off notes</text>
+
+          <!-- 2 clarify -->
+          <polyline class="edge" points="545,214 545,250 300,250 300,298" marker-end="url(#ah)"/>
+          <text class="l" x="422" y="244" text-anchor="middle">② required detail missing</text>
+          <rect class="box" x="220" y="300" width="160" height="56" rx="8"/>
+          <text class="t" x="300" y="323" text-anchor="middle">clarify</text>
+          <text class="s" x="300" y="342" text-anchor="middle">asks one question</text>
+          <line class="edge" x1="300" y1="356" x2="300" y2="398" marker-end="url(#ah)"/>
+          <text class="s" x="308" y="382">strikes +1</text>
+          <rect class="term" x="255" y="400" width="90" height="30" rx="15"/>
+          <text class="tw" x="300" y="420" text-anchor="middle">END</text>
+
+          <!-- 3 parallel group -->
+          <line class="edge" x1="600" y1="233" x2="600" y2="278" marker-end="url(#ah)"/>
+          <text class="l" x="610" y="262">③ parallel agents asked · Send to each</text>
+          <rect class="group" x="420" y="280" width="520" height="110" rx="12"/>
+          <text class="g" x="434" y="298">PARALLEL · AT THE SAME TIME · OWN SCRATCHPAD EACH</text>
+          <rect class="box" x="439" y="310" width="110" height="50" rx="7"/>
+          <text class="t" x="494" y="332" text-anchor="middle">car_info</text>
+          <text class="s" x="494" y="349" text-anchor="middle">worker</text>
+          <rect class="box" x="563" y="310" width="110" height="50" rx="7"/>
+          <text class="t" x="618" y="332" text-anchor="middle">quotation</text>
+          <text class="s" x="618" y="349" text-anchor="middle">worker</text>
+          <rect class="box" x="687" y="310" width="110" height="50" rx="7"/>
+          <text class="t" x="742" y="332" text-anchor="middle">service</text>
+          <text class="s" x="742" y="349" text-anchor="middle">worker</text>
+          <rect class="box" x="811" y="310" width="110" height="50" rx="7"/>
+          <text class="t" x="866" y="332" text-anchor="middle">locator</text>
+          <text class="s" x="866" y="349" text-anchor="middle">worker</text>
+          <line class="edge" x1="680" y1="390" x2="680" y2="418" marker-end="url(#ah)"/>
+          <text class="s" x="690" y="408">each adds its entry: merge_outputs</text>
+          <rect class="box" x="580" y="420" width="200" height="44" rx="8"/>
+          <text class="t" x="680" y="439" text-anchor="middle">after_agents</text>
+          <text class="s" x="680" y="455" text-anchor="middle">join: waits for all</text>
+          <polyline class="edge" points="580,442 230,442 230,1018 498,1018" marker-end="url(#ah)"/>
+          <text class="l" x="405" y="436" text-anchor="middle">no action agent asked</text>
+
+          <!-- 4 only action agents / 5 none -->
+          <polyline class="edge" points="710,195 1140,195 1140,1030 702,1030" marker-end="url(#ah)"/>
+          <text class="l" x="1132" y="930" text-anchor="end">⑤ no agents (small talk, out of scope)</text>
+          <polyline class="edge" points="1010,195 1010,505 760,505 760,523" marker-end="url(#ah)"/>
+          <text class="l" x="1002" y="430" text-anchor="end">④ only action agents asked</text>
+
+          <!-- action group -->
+          <rect class="group" x="300" y="490" width="680" height="425" rx="12"/>
+          <text class="g" x="320" y="908">ACTION AGENTS · ONE AT A TIME · REPLY ORDER: LEAD (50) → SUPPORT (60)</text>
+          <line class="edge" x1="680" y1="464" x2="680" y2="523" marker-end="url(#ah)"/>
+          <text class="l" x="690" y="500">first asked action agent</text>
+
+          <rect class="box" x="560" y="525" width="240" height="56" rx="8"/>
+          <text class="t" x="680" y="547" text-anchor="middle">lead / support</text>
+          <text class="s" x="680" y="566" text-anchor="middle">Gemini · own tools · sees others' results</text>
+          <line class="edge" x1="680" y1="581" x2="680" y2="608" marker-end="url(#ah)"/>
+
+          <polygon class="decision" points="590,640 680,610 770,640 680,670"/>
+          <text class="t" x="680" y="644" text-anchor="middle">agent_router</text>
+
+          <polyline class="edge" points="590,640 540,640 540,713" marker-end="url(#ah)"/>
+          <text class="l" x="560" y="631" text-anchor="middle">tool calls</text>
+          <polyline class="edge" points="770,640 880,640 880,713" marker-end="url(#ah)"/>
+          <text class="l" x="826" y="631" text-anchor="middle">final answer / limit</text>
+
+          <rect class="box" x="450" y="715" width="180" height="52" rx="8"/>
+          <text class="t" x="540" y="737" text-anchor="middle">approval</text>
+          <text class="s" x="540" y="755" text-anchor="middle">own tool? pre-check ok?</text>
+
+          <rect class="box" x="800" y="715" width="160" height="52" rx="8"/>
+          <text class="t" x="880" y="737" text-anchor="middle">save_output</text>
+          <text class="s" x="880" y="755" text-anchor="middle">agent_outputs · clear scratch</text>
+
+          <line class="edge" x1="540" y1="767" x2="540" y2="798" marker-end="url(#ah)"/>
+          <text class="l" x="548" y="788">read-only tool</text>
+          <polyline class="edge" points="630,741 750,741 750,798" marker-end="url(#ah)"/>
+          <text class="l" x="690" y="733" text-anchor="middle">action tool</text>
+
+          <rect class="box" x="450" y="800" width="180" height="52" rx="8"/>
+          <text class="t" x="540" y="822" text-anchor="middle">tools</text>
+          <text class="s" x="540" y="840" text-anchor="middle">Python runs the tool</text>
+
+          <rect class="pause" x="660" y="800" width="180" height="52" rx="8"/>
+          <text class="t" x="750" y="822" text-anchor="middle">ask_user ⏸</text>
+          <text class="s" x="750" y="840" text-anchor="middle">Confirm / Cancel</text>
+          <line class="edge" x1="660" y1="826" x2="632" y2="826" marker-end="url(#ah)"/>
+          <text class="l" x="646" y="816" text-anchor="middle">Confirm</text>
+
+          <!-- back-to-agent lane -->
+          <polyline class="edge loop" points="450,826 330,826"/>
+          <polyline class="edge loop" points="450,741 330,741"/>
+          <polyline class="edge loop" points="750,852 750,885 330,885"/>
+          <polyline class="edge loop" points="330,885 330,553 558,553" marker-end="url(#ah)"/>
+          <text class="s" x="338" y="820">tool result</text>
+          <text class="s" x="338" y="735">NOT DONE</text>
+          <text class="s" x="560" y="879" text-anchor="middle">Cancel → NOT DONE</text>
+          <text class="l" x="338" y="600">back to the same agent</text>
+          <text class="s" x="338" y="615">(route_back / Command)</text>
+
+          <!-- next action agent / composer -->
+          <polyline class="edge loop" points="960,741 995,741 995,567 802,567" marker-end="url(#ah)"/>
+          <text class="l" x="988" y="600" text-anchor="end">next asked action agent</text>
+          <polyline class="edge" points="880,767 880,1010 702,1010" marker-end="url(#ah)"/>
+          <text class="l" x="888" y="955">after_action: none left</text>
+
+          <!-- composer / guardrail / summarize / END -->
+          <rect class="box" x="500" y="990" width="200" height="56" rx="8"/>
+          <text class="t" x="600" y="1012" text-anchor="middle">composer</text>
+          <text class="s" x="600" y="1031" text-anchor="middle">Gemini → one reply, fixed order</text>
+          <line class="edge" x1="660" y1="1046" x2="660" y2="1088" marker-end="url(#ah)"/>
+          <text class="s" x="668" y="1072">reply</text>
+          <rect class="box" x="500" y="1090" width="200" height="52" rx="8"/>
+          <text class="t" x="600" y="1112" text-anchor="middle">guardrail</text>
+          <text class="s" x="600" y="1130" text-anchor="middle">every ₹ / km from a tool?</text>
+          <line class="edge loop" x1="540" y1="1090" x2="540" y2="1048" marker-end="url(#ah)"/>
+          <text class="l" x="532" y="1072" text-anchor="end">wrong figure: fix once</text>
+          <polyline class="edge" points="700,1116 850,1116 850,1178" marker-end="url(#ah)"/>
+          <text class="l" x="775" y="1108" text-anchor="middle">&gt; 20 messages</text>
+          <rect class="box" x="760" y="1180" width="180" height="48" rx="8"/>
+          <text class="t" x="850" y="1200" text-anchor="middle">summarize</text>
+          <text class="s" x="850" y="1217" text-anchor="middle">older messages → summary</text>
+          <line class="edge" x1="600" y1="1142" x2="600" y2="1188" marker-end="url(#ah)"/>
+          <text class="l" x="590" y="1170" text-anchor="end">otherwise</text>
+          <line class="edge" x1="760" y1="1204" x2="647" y2="1204" marker-end="url(#ah)"/>
+          <rect class="term" x="555" y="1190" width="90" height="30" rx="15"/>
+          <text class="tw" x="600" y="1210" text-anchor="middle">END</text>
+          <text class="s" x="600" y="1252" text-anchor="middle">After END the app saves the State to data/conversations/&lt;thread_id&gt;.json · good reply → strikes 0 · safe reply → strikes +1</text>
+        </svg>
+      </div>
+      <figcaption>The router checks three things in order: does a person need to take over, is a required detail missing, which agents were asked. Parallel agents run at the same time and join at <code>after_agents</code>; action agents then run one at a time, each able to pause at <code>ask_user</code>.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Inside each parallel worker</h2>
+    <p>car_info, quotation, service and locator each run this small loop in their own subgraph, with a private scratchpad. Only the result comes back to the main graph.</p>
+    <figure>
+      <div class="frame">
+        <svg id="worker" viewBox="0 0 900 190" role="img" aria-label="Worker subgraph: agent calls Gemini, worker_router sends tool calls to approval then tools and back to agent, and a final answer, the round limit or a Gemini failure to finish, which returns agent_outputs for that agent.">
+          <defs>
+            <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path class="arrowhead" d="M0,0 L10,5 L0,10 z"/>
+            </marker>
+          </defs>
+          <rect class="term" x="20" y="45" width="70" height="28" rx="14"/>
+          <text class="tw" x="55" y="64" text-anchor="middle">Send</text>
+          <line class="edge" x1="90" y1="59" x2="128" y2="59" marker-end="url(#ah2)"/>
+          <rect class="box" x="130" y="33" width="150" height="52" rx="8"/>
+          <text class="t" x="205" y="55" text-anchor="middle">agent</text>
+          <text class="s" x="205" y="73" text-anchor="middle">Gemini + own tools</text>
+          <line class="edge" x1="280" y1="59" x2="318" y2="59" marker-end="url(#ah2)"/>
+          <polygon class="decision" points="320,59 400,31 480,59 400,87"/>
+          <text class="t" x="400" y="63" text-anchor="middle">worker_router</text>
+          <line class="edge" x1="480" y1="59" x2="558" y2="59" marker-end="url(#ah2)"/>
+          <text class="l" x="519" y="50" text-anchor="middle">tool calls</text>
+          <rect class="box" x="560" y="33" width="150" height="52" rx="8"/>
+          <text class="t" x="635" y="55" text-anchor="middle">approval</text>
+          <text class="s" x="635" y="73" text-anchor="middle">own read-only tools only</text>
+          <line class="edge" x1="710" y1="59" x2="748" y2="59" marker-end="url(#ah2)"/>
+          <rect class="box" x="750" y="33" width="130" height="52" rx="8"/>
+          <text class="t" x="815" y="55" text-anchor="middle">tools</text>
+          <text class="s" x="815" y="73" text-anchor="middle">Python</text>
+          <polyline class="edge loop" points="815,33 815,14 205,14 205,31" marker-end="url(#ah2)"/>
+          <text class="s" x="510" y="10" text-anchor="middle">result → agent again (max 5 rounds)</text>
+          <polyline class="edge loop" points="635,85 635,104 230,104 230,87" marker-end="url(#ah2)"/>
+          <text class="s" x="432" y="118" text-anchor="middle">not its tool → NOT DONE (never pauses)</text>
+          <polyline class="edge" points="400,87 400,140 538,140" marker-end="url(#ah2)"/>
+          <text class="l" x="408" y="132">final answer · limit · Gemini failed</text>
+          <rect class="box" x="540" y="118" width="170" height="44" rx="8"/>
+          <text class="t" x="625" y="137" text-anchor="middle">finish</text>
+          <text class="s" x="625" y="153" text-anchor="middle">answer · tools · status · seconds</text>
+          <line class="edge" x1="710" y1="140" x2="748" y2="140" marker-end="url(#ah2)"/>
+          <text class="l" x="752" y="136">agent_outputs[name]</text>
+          <text class="s" x="752" y="152">via merge_outputs</text>
+        </svg>
+      </div>
+      <figcaption>A worker that Gemini can't reach after all retries returns <code>status: "failed"</code>; the other workers carry on and the reply names the missing part.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>The flow in words</h2>
+    <ol class="steps">
+      <li><div><b>HumanMessage → State.</b> The customer's message is added to <code>messages</code>.</div></li>
+      <li><div><b>supervisor.</b> One Gemini call returns the intents, the slots (shared details plus a list of cars) and an escalation flag. Python merges the slots with the remembered ones and resets the per-turn fields.</div></li>
+      <li><div><b>router.</b> ① A person is needed (flag, or 2+ failed turns in a row) → <code>escalate</code>. ② A required detail is missing → <code>clarify</code>, which asks one question and ends the turn. ③–⑤ Otherwise the intents become agents and are split.</div></li>
+      <li><div><b>Parallel agents.</b> Each read-only agent gets its own copy (recent messages, summary, only its cars) and runs its loop at the same time as the others. Results join in <code>agent_outputs</code>; <code>after_agents</code> waits for all.</div></li>
+      <li><div><b>Action agents.</b> lead, then support, one at a time. Each sees the others' results, runs its tool loop, and pauses at <code>ask_user</code> before saving anything. <code>save_output</code> stores its result and hands over to the next one.</div></li>
+      <li><div><b>composer → guardrail.</b> One reply from every finding, in a fixed order. Any ₹ or km figure not found in a tool result sends it back once; a second failure gives a safe reply.</div></li>
+      <li><div><b>summarize → END.</b> Past 20 messages, older ones are folded into the summary. After END the State is saved to a file.</div></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Nodes</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Node</th><th>Gemini</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td>supervisor</td><td><span class="pill y">yes</span></td><td>intents + slots + escalation flag; merges slots (per car), resets <code>agent_outputs</code>, guardrail fields, the action scratchpad</td></tr>
+        <tr><td>escalate</td><td><span class="pill">no</span></td><td>writes hand-off notes (112 and roadside first for safety; customer care, callback, high-priority ticket); strikes → 0; <code>escalated</code> → true</td></tr>
+        <tr><td>clarify</td><td><span class="pill y">yes</span></td><td>asks one question for the missing detail (per car); strikes +1; ends the turn</td></tr>
+        <tr><td>car_info · quotation · service · locator</td><td><span class="pill y">yes</span></td><td>parallel workers: agent ⇄ approval ⇄ tools → finish; return only <code>agent_outputs[name]</code></td></tr>
+        <tr><td>after_agents</td><td><span class="pill">no</span></td><td>the join: runs once, after the slowest worker</td></tr>
+        <tr><td>lead · support</td><td><span class="pill y">yes</span></td><td>action agents: own tools, see the other agents' results, write to <code>action_messages</code></td></tr>
+        <tr><td>approval</td><td><span class="pill">no</span></td><td>refuses tools that aren't the agent's own; runs the pre-check (contact details, a complete ticket); action tool → ask_user, read-only → tools</td></tr>
+        <tr><td>ask_user</td><td><span class="pill">no</span></td><td>pauses the graph (<code>interrupt</code>) for Confirm / Cancel</td></tr>
+        <tr><td>tools</td><td><span class="pill">no</span></td><td>runs the requested Python tools; results go back to the same agent</td></tr>
+        <tr><td>save_output</td><td><span class="pill">no</span></td><td>stores the action agent's answer + tool results in <code>agent_outputs</code>, clears its scratchpad</td></tr>
+        <tr><td>composer</td><td><span class="pill y">yes</span></td><td>one reply from all findings, fixed order (car info → price → service → showrooms → lead → support)</td></tr>
+        <tr><td>guardrail</td><td><span class="pill">no</span></td><td>checks every ₹ / km figure against tool results; good reply → strikes 0; second failure → safe reply, strikes +1</td></tr>
+        <tr><td>summarize</td><td><span class="pill y">yes</span></td><td>folds messages before the last 2 questions into the summary</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Edges</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>From</th><th>Kind</th><th>Condition → to</th></tr></thead>
+      <tbody>
+        <tr><td>START</td><td>always</td><td>→ supervisor</td></tr>
+        <tr><td>supervisor</td><td>route_after_supervisor</td><td>① escalation flag or strikes ≥ 2 → escalate · ② required detail missing → clarify · ③ parallel agents asked → Send to each · ④ only action agents → the first one · ⑤ none → composer</td></tr>
+        <tr><td>escalate</td><td>always</td><td>→ composer</td></tr>
+        <tr><td>clarify</td><td>always</td><td>→ END</td></tr>
+        <tr><td>each worker</td><td>always</td><td>→ after_agents</td></tr>
+        <tr><td>after_agents</td><td>after_agents</td><td>an action agent asked → the first one · otherwise → composer</td></tr>
+        <tr><td>lead / support</td><td>agent_router</td><td>tool calls within 5 rounds → approval · final answer or limit → save_output</td></tr>
+        <tr><td>approval</td><td>Command</td><td>not its tool / pre-check problem → back to the agent (NOT DONE) · action tool → ask_user · read-only → tools</td></tr>
+        <tr><td>ask_user</td><td>Command</td><td>Confirm → tools · Cancel → back to the agent (NOT DONE)</td></tr>
+        <tr><td>tools</td><td>route_back</td><td>→ the active action agent</td></tr>
+        <tr><td>save_output</td><td>after_action</td><td>another asked action agent → it · none left → composer</td></tr>
+        <tr><td>composer</td><td>always</td><td>→ guardrail</td></tr>
+        <tr><td>guardrail</td><td>after_guardrail</td><td>wrong figure (first time) → composer · more than 20 messages → summarize · otherwise → END</td></tr>
+        <tr><td>summarize</td><td>always</td><td>→ END</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Example paths</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Question</th><th>Path</th></tr></thead>
+      <tbody>
+        <tr><td>"Hi"</td><td>supervisor → composer → guardrail → END</td></tr>
+        <tr><td>"Price of Slavia"</td><td>supervisor → clarify ("Which variant, and which city?") → END</td></tr>
+        <tr><td>"Kylaq Signature AT in Hyderabad"</td><td>supervisor → quotation → after_agents → composer → guardrail → END</td></tr>
+        <tr><td>"Kylaq price + nearest showroom"</td><td>supervisor → quotation ∥ locator → after_agents → composer → guardrail → END</td></tr>
+        <tr><td>"Is the Kylaq cheaper than the Kushaq?"</td><td>supervisor (two cars) → quotation (starting prices, no clarify) → after_agents → composer → …</td></tr>
+        <tr><td>"Book a test drive"</td><td>supervisor → lead → approval → ask_user ⏸ → Confirm → tools → lead → save_output → composer → …</td></tr>
+        <tr><td>"Showroom near me, book a drive, and a complaint"</td><td>supervisor → locator → after_agents → lead (Confirm #1) → save_output → support (Confirm #2) → save_output → composer → …</td></tr>
+        <tr><td>"My brakes failed on the highway"</td><td>supervisor (escalation: safety) → escalate → composer → guardrail → END</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+</main>
+
+</html>

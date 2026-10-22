@@ -7,6 +7,7 @@ AGENT = AgentSpec(
     intent_help=(
         "features, specs, variants, engines, safety, dimensions, colours, and comparisons of those between\n"
         "  models (not prices: a price comparison is quotation).\n"
+        "  Also which variants a model has, or what a variant is.\n"
         '  Examples: "What safety features does the Kushaq have?" / "Kushaq vs Slavia" / '
         '"Does the Kylaq have a sunroof?"'),
     role="car information specialist",

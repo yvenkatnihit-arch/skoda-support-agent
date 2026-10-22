@@ -27,6 +27,38 @@ MENTIONS = {
     "fuel": {"petrol": r"\bpetrol|\btsi\b", "diesel": r"\bdiesel", "electric": r"\belectric|\bev\b"},
 }
 INTERNAL_KEYS = ("active_cars", "car_intents")
+# Everyday words customers use instead of a trim name (checked only when the value isn't a real trim).
+VARIANT_WORDS = {
+    "base": r"\b(base|cheapest|lowest|entry|basic|starting|least expensive)\b",
+    "top": r"\b(top|top[- ]?end|topmost|highest|fully[- ]loaded|most expensive|flagship)\b",
+    "latest": r"\b(latest|newest|new|current|20\d\d)\b",  # every listed variant is the current lineup
+}
+
+
+def _variant_word(value: str) -> str | None:
+    text = str(value).lower()
+    return next((word for word, pattern in VARIANT_WORDS.items() if re.search(pattern, text)), None)
+
+
+def _resolve_variant(repo, car: dict) -> None:
+    """Turn the car's variant into an official trim name: an exact trim (normalised) wins; otherwise "base" -> the
+    cheapest trim and "top" -> the most expensive (within the gearbox / fuel if given, and the gearbox is set too);
+    "latest" -> no single variant, so the price agent shows the whole lineup."""
+    model = repo.get_model(car["model"]) if car.get("model") else None
+    if model is None or not car.get("variant"):
+        return
+    official = repo.canonical_variant_name(model.id, car["variant"])
+    if official:
+        car["variant"] = official
+        return
+    word = _variant_word(car["variant"])
+    if word == "latest":
+        car["variant"] = None
+    elif word in ("base", "top"):
+        rows = repo.find_variants(model.id, fuel=car.get("fuel"), transmission=car.get("transmission"))
+        if rows:  # sorted by ex-showroom price
+            chosen = rows[0] if word == "base" else rows[-1]
+            car["variant"], car["transmission"] = chosen.name, chosen.transmission
 
 
 def _squash(text: str) -> str:
@@ -179,10 +211,7 @@ def merge_slots(old: dict | None, new: Slots, message: str | None = None) -> dic
                 car = {k: None for k in CAR_KEYS}
                 cars.append(car)
         car.update(given)
-        if car.get("model") and car.get("variant"):
-            model = repo.get_model(car["model"])
-            if model:
-                car["variant"] = repo.canonical_variant_name(model.id, car["variant"]) or car["variant"]
+        _resolve_variant(repo, car)
         if car.get("model") and car["model"] not in named:
             named.append(car["model"])
             if mention.intents:
