@@ -52,12 +52,14 @@ def check_cars(case: dict, slots: dict, intents: list[str]) -> list[str]:
     return problems
 
 
-def check(case: dict, intents: list[str], slots: dict) -> dict:
+def check(case: dict, intents: list[str], slots: dict, escalation: str | None = None) -> dict:
     options = case.get("expected_intents_any") or [case["expected_intents"]]
     intents_ok = any(set(o) == set(intents) for o in options)
     wrong = {k: {"expected": v, "got": slots.get(k)} for k, v in (case.get("expected_slots") or {}).items()
              if not _slot_equal(k, v, slots.get(k))}
     car_problems = check_cars(case, slots, intents)
+    if "expected_escalation" in case and escalation != case["expected_escalation"]:
+        car_problems.append(f"escalation {escalation!r}, expected {case['expected_escalation']!r}")
     return {"intents_ok": intents_ok, "slots_ok": not wrong, "wrong_slots": wrong, "car_problems": car_problems,
             "pass": intents_ok and not wrong and not car_problems}
 
@@ -81,8 +83,9 @@ def main() -> int:
                    for m in case.get("history", [])]
         update = supervisor({"messages": [*history, HumanMessage(case["message"])], "slots": case.get("slots", {})})
         intents, slots = update["intents"], update["slots"]
-        result = check(case, intents, slots)
+        result = check(case, intents, slots, update.get("escalation"))
         results.append({"id": case["id"], "what": case["what"], "intents": intents,
+                        "escalation": update.get("escalation"),
                         "agents": CATALOG.agents_for(intents),
                         "slots": {k: v for k, v in public_view(slots).items() if v not in (None, "", [], {})},
                         **result})
@@ -91,7 +94,8 @@ def main() -> int:
     for r in results:
         mark = "PASS" if r["pass"] else "FAIL"
         print(f"{mark}  {r['id']}  {r['what']}")
-        print(f"      intents {r['intents']}  -> agents {r['agents']}")
+        print(f"      intents {r['intents']}  -> agents {r['agents']}"
+              + (f"  ESCALATION: {r['escalation']}" if r["escalation"] else ""))
         print(f"      slots   {mask_phone(json.dumps(r['slots'], ensure_ascii=False))}")
         if not r["intents_ok"]:
             case = next(c for c in cases if c["id"] == r["id"])

@@ -523,3 +523,19 @@ slots = {
 - Workers and action agents get `agent_view` (shared details + only their cars); composer and clarify get `public_view`. `get_variant_details` returns `starting_ex_showroom_price` / `starting_variant` / `starting_price_city`.
 - Prompts: supervisor (`cars` with examples), quotation (comparisons: starting prices, or on-road for each car when every trim and a city are known), car_info (several cars); intents: price comparisons are quotation, feature comparisons car_info (r-04 was routed to car_info only until this was said).
 - Checks: `run_routing` verifies `expected_cars` (active cars, their details, which agent gets them, no clarify); r-01, r-04 and new c-01…c-03 pass; all 17 routing and slot cases pass live. `tests/test_cars.py` (8 tests); 197 tests pass.
+
+---
+
+## 13. Hand-off to a human (conditional routing), built 2026-10-22
+
+When the bot can't or shouldn't keep going alone, a new conditional route hands the customer to a person instead of looping.
+
+- **Triggers** (checked first in `route_after_supervisor`, before clarify: no more questions for an upset customer):
+  - the supervisor's new `escalation` flag: `frustration` (angry or fed up with the assistant), `safety` (accident, injury, fire, brakes or steering failing), `dispute` (legal action, consumer court, refund or compensation dispute). A normal complaint is not escalated; "talk to a person" stays `lead_capture` (callback), as before;
+  - **strikes**: failed or stuck turns in a row ≥ `ESCALATE_AFTER_STRIKES` (default 2). +1 when clarify asks, when the guardrail replaces a reply with the safe reply, or when a turn fails (after the rollback); reset to 0 by a good, checked reply.
+- **`escalate` node** (plain Python, `app/graph/nodes/escalate.py`): writes hand-off instructions as the only finding (apologise; for safety: 112 and don't drive, roadside assistance through customer care, first; then three ways to a person: customer care `CUSTOMER_CARE_NUMBER`, default 1800 2700 260 from the sample service FAQ, *confirm before go-live*; a callback; a high-priority ticket for a complaint), resets strikes and sets `escalated`. → composer (writes it warmly in its own words; the internal label is stripped if it ever leaks) → guardrail → END. The callback / ticket follows on the next turn through the normal Confirm/Cancel flow.
+- **Escalated tickets:** once `escalated`, action agents are told to raise tickets with `priority="high"`; `tickets.csv` gained a `priority` column (old files are upgraded on the next write).
+- State: `escalation`, `strikes`, `escalated` (rollback and old saved conversations handled). Turn log: `escalated`, `escalation`, `strikes`.
+- Checks: `evals/routing_cases.jsonl` e-01…e-05 (frustration, safety, dispute, normal complaint → no hand-off, "talk to a person" → callback) pass live; `tests/test_escalation.py` (9 tests); 206 tests pass. Live CLI check of the safety case: supervisor → escalate → composer → guardrail, 2 Gemini calls, ~5 s.
+
+**Environment note (2026-10-22):** Windows Application Control on this machine started blocking `pyarrow`'s compiled `_compute` module, which made `import pandas` fail. pyarrow was installed only because Streamlit needs it; it was uninstalled from `.venv` (pandas and the agent work without it). Streamlit (Phase 5 UI) needs pyarrow again, so the policy must allow it before the UI is built.

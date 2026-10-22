@@ -23,6 +23,9 @@ HISTORY_MESSAGES = 6         # routing needs the recent turns only; older contex
 AI_MESSAGE_MAX_CHARS = 600
 
 
+Escalation = Literal["frustration", "safety", "dispute"]  # why a person should take over (ROADMAP section 13)
+
+
 @lru_cache
 def router_output_model(intents: tuple[str, ...]) -> type[BaseModel]:
     """The supervisor's structured output, with the intent labels limited to the catalog's intents."""
@@ -31,6 +34,10 @@ def router_output_model(intents: tuple[str, ...]) -> type[BaseModel]:
         "RouterOutput",
         intents=(list[intent_type], Field(min_length=1, description="All intents in the customer's latest message")),
         slots=(Slots, Field(default_factory=Slots, description="Details stated by the customer; null if not stated")),
+        escalation=(Escalation | None, Field(default=None, description=(
+            "Set ONLY when a person should take over: frustration (the customer is angry or fed up with the "
+            "assistant), safety (accident, injury, fire, brakes or steering failing), dispute (legal action, "
+            "consumer court, a refund or compensation dispute). Otherwise null."))),
     )
 
 
@@ -126,6 +133,7 @@ def make_supervisor(router_llm, catalog: Catalog = CATALOG):
             "agent_outputs": None, "guardrail_feedback": None, "guardrail_retries": 0,
         }
         update["active_action"] = ""
+        update["escalation"] = getattr(result, "escalation", None)
         if state.get("action_messages"):
             update["action_messages"] = [RemoveMessage(id=REMOVE_ALL_MESSAGES)]
         return update

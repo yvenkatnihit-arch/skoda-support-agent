@@ -21,6 +21,7 @@ It uses no database: car data lives in CSV/JSON files, documents are searched wi
 | **Test drives, callbacks, brochures** | "Book a Kylaq test drive" → asks you to **Confirm** before saving |
 | **Complaints and tickets** | "There's a problem with my service bill" → asks what's wrong, then raises a ticket (`SKD-20261021-0001`) after you **Confirm** · "Status of ticket SKD-…?" |
 | **Several things at once** | "Kylaq price in Hyderabad and nearest showroom to Madhapur" → both answered together |
+| **Hand-off to a person** | an upset customer, a safety issue ("my brakes failed") or a dispute, or the bot failing twice in a row → apologises, safety advice first if needed, and offers customer care, a callback or a high-priority ticket |
 
 Every price and distance comes from Python tools, never from the model, and a **guardrail** checks every ₹ and km figure in a reply against the tool results before the customer sees it.
 
@@ -33,7 +34,8 @@ customer message
    ▼
 supervisor  ── Gemini: intents + details (car, city, contact…)
    ▼
-router ──(detail missing)──▶ clarify: asks one question
+router ──(needs a person)──▶ escalate: apology + ways to reach a person → composer
+   ├──(detail missing)──▶ clarify: asks one question
    │
    ├─▶ car_info · quotation · service · locator      ← run IN PARALLEL, each with its own tools
    │          (merge results)
@@ -66,6 +68,8 @@ copy .env.example .env          # then open .env and set GOOGLE_API_KEY
 .venv\Scripts\python.exe -m ingestion.build_index      # builds the document index (a few embedding calls)
 ```
 
+If `import pandas` fails with *"An Application Control policy has blocked this file"* (pyarrow), run `.venv\Scripts\python.exe -m pip uninstall -y pyarrow`: the agent doesn't need it (only Streamlit does).
+
 Never commit `.env`. All settings are documented in [.env.example](.env.example); the main ones:
 
 | Setting | Default | What it does |
@@ -76,6 +80,7 @@ Never commit `.env`. All settings are documented in [.env.example](.env.example)
 | `MAX_TOOL_ROUNDS` | 5 | tool rounds per agent per question |
 | `RETRIEVAL_MODE` | `hybrid` | `hybrid` (FAISS + BM25) or `vector` |
 | `SUPPORT_RESPONSE_PROMISE` | `within 24 hours` | what the ticket confirmation promises the customer |
+| `CUSTOMER_CARE_NUMBER` / `ESCALATE_AFTER_STRIKES` | `1800 2700 260` / 2 | the number offered on a hand-off, and how many failed turns in a row trigger one |
 | `LANGSMITH_TRACING` / `LANGSMITH_API_KEY` | off | optional tracing to LangSmith (phone numbers masked) |
 
 ---

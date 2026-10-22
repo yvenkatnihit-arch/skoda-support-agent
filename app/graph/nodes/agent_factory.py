@@ -20,6 +20,8 @@ AI_MESSAGE_MAX_CHARS = 800
 OTHER_ANSWER_MAX_CHARS = 800      # lead's view of each other agent's answer
 OTHER_TOOL_RESULT_MAX_CHARS = 1500
 CANCELLED = "NOT DONE: cancelled. The customer asked something else instead of confirming."
+ESCALATED_NOTE = ('\nThis conversation was handed off to a person earlier: raise any ticket with priority "high" '
+                  "and keep it short and empathetic.\n")
 
 
 def tool_rounds(scratch: list) -> int:
@@ -78,7 +80,8 @@ def make_action_node(spec: AgentSpec, llm_with_tools):
             spec, llm_with_tools, slots=agent_view(state.get("slots") or {}, spec.intent), summary=summary_text(state),
             dialogue=recent_dialogue(state.get("messages", []), spec.history_messages, AI_MESSAGE_MAX_CHARS),
             scratch=state.get("action_messages") or [],
-            extra=other_findings(state.get("agent_outputs"), exclude=spec.name))
+            extra=other_findings(state.get("agent_outputs"), exclude=spec.name)
+            + (ESCALATED_NOTE if state.get("escalated") else ""))
         return {"action_messages": [reply], "active_action": spec.name}
 
     action_agent.__name__ = spec.name

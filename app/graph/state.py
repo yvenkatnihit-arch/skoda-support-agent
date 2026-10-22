@@ -50,6 +50,14 @@ class State(TypedDict, total=False):
     # Summary of older messages (replaced by summarize).
     summary: str
 
+    # Hand-off to a human (ROADMAP section 13).
+    # Why the supervisor wants a person this turn: "frustration" | "safety" | "dispute"; None otherwise.
+    escalation: str | None
+    # Failed or stuck turns in a row (error reply, guardrail safe reply, clarify asked again); 0 after a good reply.
+    strikes: int
+    # The conversation was handed off at least once: support raises its ticket as high priority.
+    escalated: bool
+
 
 class WorkerState(TypedDict, total=False):
     """Private state of one parallel agent. Its keys differ from State on purpose: only agent_outputs is

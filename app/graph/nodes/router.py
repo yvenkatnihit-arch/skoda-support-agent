@@ -12,11 +12,20 @@ from app.graph.nodes.supervisor import missing_slots
 SUMMARY_TRIGGER = 20  # summarize when messages holds more than this many
 
 
+def needs_person(state: dict) -> bool:
+    """Hand off to a human: the supervisor flagged frustration / safety / a dispute, or the bot has failed or
+    got stuck ESCALATE_AFTER_STRIKES turns in a row."""
+    return bool(state.get("escalation")) or (state.get("strikes") or 0) >= get_settings().escalate_after_strikes
+
+
 def route_after_supervisor(state: dict, catalog: Catalog = CATALOG):
-    """Missing required slot -> clarify (no agent runs). Otherwise start every parallel agent at once (one Send
-    each, each with its own copy of what it needs); only action agents -> the first one; none -> composer."""
+    """A person is needed -> escalate (checked first: no more questions or automation). Missing required slot ->
+    clarify (no agent runs). Otherwise start every parallel agent at once (one Send each, each with its own copy of
+    what it needs); only action agents -> the first one; none -> composer."""
     from app.graph.nodes.worker import worker_input  # here to avoid an import cycle
 
+    if needs_person(state):
+        return "escalate"
     intents = state.get("intents") or []
     if missing_slots(intents, state.get("slots") or {}, catalog):
         return "clarify"

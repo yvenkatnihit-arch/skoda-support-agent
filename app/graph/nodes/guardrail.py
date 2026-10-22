@@ -90,10 +90,11 @@ def guardrail(state: dict) -> dict:
         return {"guardrail_feedback": None}
     bad = unsupported_figures(reply.text, state.get("agent_outputs") or {})
     if not bad:
-        return {"guardrail_feedback": None}
+        return {"guardrail_feedback": None, "strikes": 0}  # a good reply: the hand-off counter starts again
     retries = state.get("guardrail_retries") or 0
     log.warning("guardrail mismatch", figures=bad, retry=retries)
     if retries == 0:
         return {"guardrail_feedback": f"these figures are not in the tool results: {', '.join(bad)}",
                 "guardrail_retries": 1}
-    return {"guardrail_feedback": None, "messages": [AIMessage(content=SAFE_REPLY, id=reply.id)]}
+    return {"guardrail_feedback": None, "messages": [AIMessage(content=SAFE_REPLY, id=reply.id)],
+            "strikes": (state.get("strikes") or 0) + 1}  # couldn't give a checked answer: counts toward a hand-off

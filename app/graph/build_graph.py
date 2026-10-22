@@ -20,6 +20,7 @@ from app.graph.nodes.agent_factory import make_action_node
 from app.graph.nodes.approval import make_approval, make_ask_user
 from app.graph.nodes.clarify import make_clarify
 from app.graph.nodes.composer import make_composer
+from app.graph.nodes.escalate import escalate
 from app.graph.nodes.guardrail import guardrail
 from app.graph.nodes.router import (after_action, after_agents, after_guardrail, agent_router, route_after_supervisor,
                                     route_back)
@@ -83,14 +84,16 @@ def build_graph(llms: GraphLLMs | None = None, checkpointer=None, catalog: Catal
     for name in catalog.workers:
         g.add_node(name, make_worker(catalog.agents[name], llms.agents[name]))
     g.add_node("after_agents", lambda _state: {})  # join: runs once, after every parallel agent finished
+    g.add_node("escalate", escalate)  # hand-off to a person: writes the hand-off notes for the composer
     g.add_node("composer", make_composer(llms.composer, catalog))
     g.add_node("guardrail", guardrail)
     g.add_node("summarize", make_summarize(llms.summarize))
 
     g.add_edge(START, "supervisor")
     g.add_conditional_edges("supervisor", partial(route_after_supervisor, catalog=catalog),
-                            ["clarify", "composer", *catalog.workers, *actions])
+                            ["escalate", "clarify", "composer", *catalog.workers, *actions])
     g.add_edge("clarify", END)
+    g.add_edge("escalate", "composer")
     for name in catalog.workers:
         g.add_edge(name, "after_agents")
     g.add_conditional_edges("after_agents", partial(after_agents, catalog=catalog), ["composer", *actions])

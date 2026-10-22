@@ -22,6 +22,7 @@ def make_clarify(llm, catalog: Catalog = CATALOG):
         ))
         last_question = next((m for m in reversed(state.get("messages", [])) if isinstance(m, HumanMessage)), None)
         reply = llm.invoke([system, *([last_question] if last_question else [])])
-        return {"messages": [AIMessage(content=reply.text)]}
+        # asking again counts toward a hand-off: after ESCALATE_AFTER_STRIKES the router offers a person instead
+        return {"messages": [AIMessage(content=reply.text)], "strikes": (state.get("strikes") or 0) + 1}
 
     return clarify

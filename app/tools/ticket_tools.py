@@ -75,7 +75,8 @@ INTAKE: dict[str, Intake] = {
 }
 Category = Literal["vehicle_problem", "service_experience", "dealer_staff", "billing", "other"]
 
-TICKET_COLUMNS = ["ticket_id", "created_at", "status", "category", "issue_type", "name", "phone", "city", "model",
+TICKET_COLUMNS = ["ticket_id", "created_at", "status", "priority", "category", "issue_type", "name", "phone", "city",
+                  "model",
                   "registration_number", "dealer_id", "dealer_name", "incident_date", "invoice_number", "amount",
                   "drivable", "description"]
 DESCRIPTION_MIN, DESCRIPTION_MAX = 20, 1000
@@ -199,6 +200,8 @@ class CreateTicketArgs(BaseModel):
     amount: int | None = Field(default=None, ge=0, description="Amount in rupees the issue is about, if given")
     drivable: bool | None = Field(default=None, description="Vehicle problems: is the car safe to drive?")
     registration_number: str | None = Field(default=None, description="Car registration, e.g. TS09AB1234, if given")
+    priority: Literal["normal", "high"] = Field(default="normal", description="high when the conversation was "
+                                                                             "handed off to a person")
 
 
 @tool("create_ticket", args_schema=CreateTicketArgs)
@@ -206,7 +209,7 @@ class CreateTicketArgs(BaseModel):
 def create_ticket(name: str, phone: str, city: str, model: str, category: str, issue_type: str, description: str,
                   incident_date: str | None = None, dealer_id: str | None = None, dealer_name: str | None = None,
                   invoice_number: str | None = None, amount: int | None = None, drivable: bool | None = None,
-                  registration_number: str | None = None) -> str:
+                  registration_number: str | None = None, priority: str = "normal") -> str:
     """ACTION: raise a support ticket for a complaint or problem. Needs the customer's confirmation.
     Only call it once you understand the issue: its category, issue type and the details your instructions list."""
     args = dict(name=name, phone=phone, city=city, category=category, issue_type=issue_type,
@@ -228,7 +231,8 @@ def create_ticket(name: str, phone: str, city: str, model: str, category: str, i
     with _write_lock:
         row = {
             "ticket_id": _next_ticket_id(_read_tickets(), now.strftime("%Y%m%d")),
-            "created_at": now.isoformat(timespec="seconds"), "status": "open", "category": category,
+            "created_at": now.isoformat(timespec="seconds"), "status": "open",
+            "priority": "high" if priority == "high" else "normal", "category": category,
             "issue_type": issue_type, "name": _clean_text(name, "name", 80), "phone": normalize_indian_mobile(phone),
             "city": _clean_text(city, "city", 60), "model": car.name, "registration_number": reg or "",
             "dealer_id": dealer.id if dealer else "",
@@ -243,7 +247,8 @@ def create_ticket(name: str, phone: str, city: str, model: str, category: str, i
     log.info("ticket created", ticket_id=row["ticket_id"], category=category, issue_type=issue_type)
     promise = get_settings().support_response_promise
     return to_json({
-        "status": "saved", "ticket_id": row["ticket_id"], "ticket_status": "open", "category": category,
+        "status": "saved", "ticket_id": row["ticket_id"], "ticket_status": "open", "priority": row["priority"],
+        "category": category,
         "issue_type": issue_type, "model": car.name, "phone": mask_phone(row["phone"]),
         "dealer": row["dealer_name"] or None, "response_promise": promise,
         "message": f"Ticket {row['ticket_id']} raised. The Skoda customer care team will contact the customer "

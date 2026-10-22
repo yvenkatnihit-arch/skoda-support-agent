@@ -25,7 +25,7 @@ log = structlog.get_logger()
 FRIENDLY_ERROR = "Sorry, I'm having trouble right now. Please try again in a moment."
 
 FIELD_DEFAULTS = {"intents": [], "slots": {}, "active_action": "", "guardrail_feedback": None, "guardrail_retries": 0,
-                  "summary": ""}
+                  "summary": "", "escalation": None, "strikes": 0, "escalated": False}
 
 
 @dataclass
@@ -75,6 +75,8 @@ def run_turn(graph, config: dict, payload, on_node: Callable[[str], None] | None
             log.exception("turn failed; state rolled back")
             try:
                 rollback(graph, config, before)
+                # the turn is undone, but the failure still counts toward a hand-off to a person
+                graph.update_state(config, {"strikes": (before.get("strikes") or 0) + 1}, as_node=RESTORE_AS_NODE)
             except Exception:
                 log.exception("rollback failed")
             log_turn_summary("error", payload, nodes, node_seconds, before, stats, start,
@@ -116,4 +118,5 @@ def log_turn_summary(status: str, payload, nodes: list[str], node_seconds: dict,
              slots_filled=sorted(k for k, v in (values.get("slots") or {}).items()
                                  if v not in (None, "", [], {}) and k not in ("cars", "active_cars", "car_intents")),
              cars=len((values.get("slots") or {}).get("active_cars") or []),
-             clarify="clarify" in nodes, **stats.as_dict(), **extra)
+             clarify="clarify" in nodes, escalated="escalate" in nodes, escalation=values.get("escalation"),
+             strikes=values.get("strikes") or 0, **stats.as_dict(), **extra)

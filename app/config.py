@@ -61,6 +61,9 @@ class Settings(BaseSettings):
 
     # Support tickets: what the confirmation promises the customer (a business promise: keep it accurate).
     support_response_promise: str = "within 24 hours"
+    # Hand-off to a human. The number comes from the sample service FAQ: confirm it before going live.
+    customer_care_number: str = "1800 2700 260"
+    escalate_after_strikes: int = Field(default=2, ge=1)  # failed / stuck turns in a row before handing off
 
     # Graph limits
     max_tool_rounds: int = Field(default=5, ge=1, le=20)  # tool-call rounds per agent per question

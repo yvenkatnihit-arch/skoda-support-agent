@@ -2,6 +2,7 @@
 On a guardrail fix it reuses the rejected reply's message id, so the reply is replaced, not duplicated."""
 
 import json
+import re
 import uuid
 from datetime import date
 
@@ -10,6 +11,7 @@ from langchain_core.messages import AIMessage, SystemMessage
 from app.agents import CATALOG, Catalog
 from app.graph.car_slots import public_view
 from app.graph.nodes.context import compact_findings, recent_dialogue
+from app.graph.nodes.escalate import MARKER
 from app.prompts.composer import COMPOSER_PROMPT, FEEDBACK_BLOCK
 
 RECENT_MESSAGES = 4
@@ -43,6 +45,7 @@ def make_composer(llm, catalog: Catalog = CATALOG):
             history = messages
         recent = recent_dialogue(history, RECENT_MESSAGES, AI_MESSAGE_MAX_CHARS)
         reply = llm.invoke([system, *recent])
-        return {"messages": [AIMessage(content=reply.text, id=reply_id)]}
+        text = re.sub(rf"^\W*{re.escape(MARKER)}\W*", "", reply.text).strip()  # never show the internal label
+        return {"messages": [AIMessage(content=text, id=reply_id)]}
 
     return composer
